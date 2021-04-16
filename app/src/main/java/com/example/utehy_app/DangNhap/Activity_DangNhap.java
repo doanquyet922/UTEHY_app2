@@ -1,37 +1,27 @@
 package com.example.utehy_app.DangNhap;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.Model.TaiKhoan;
 import com.example.utehy_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class Activity_DangNhap extends AppCompatActivity {
     public static DatabaseReference mData;
@@ -75,16 +65,7 @@ SharedPreferences sharedPreferences;
 
         String MaSV=edtDNUser.getText().toString();
         String MatKhau=edtPass.getText().toString();
-        mData.child("SinhViens").startAt("101185","MaLop").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("AAA", "onDataChange: "+snapshot.getValue());
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
         mData.child("TaiKhoan").child(MaSV).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -94,6 +75,7 @@ SharedPreferences sharedPreferences;
                 else {
                     Log.d("AAA", "onComplete: "+task.getResult().getValue());
                     TaiKhoan tk=task.getResult().getValue(TaiKhoan.class);
+                    Log.d("AAA",tk.toString());
                     if(tk!=null){
                     if(tk.getMatKhau()!=null ) {
                         if (tk.getMatKhau().equals(MatKhau)) {
@@ -101,6 +83,7 @@ SharedPreferences sharedPreferences;
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putString("MaSV",MaSV);
                             editor.commit();
+                            startActivity(new Intent(Activity_DangNhap.this, ManHinhChinhActivity.class));
                             if(cbLuuMK.isChecked()){
 //                                SharedPreferences.Editor editor=sharedPreferences.edit();
                                 editor.putString("MatKhau",MatKhau);
