@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManHinhChinh.ManHinhChinhActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#0567B0"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_student"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="10dp"></ImageView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xin chào"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20sp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hoàng Việt"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5sp"
+                android:textStyle="bold"
+                ></TextView>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_setting2"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="100dp"
+            ></ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="479dp"
+        android:background="#8BC34A"></LinearLayout>
+
+</RelativeLayout>
