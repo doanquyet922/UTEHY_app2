@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "94245779179",
+    "project_id": "utehy-app",
+    "storage_bucket": "utehy-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94245779179:android:bcb8851610814a5dcb30ae",
+        "android_client_info": {
+          "package_name": "com.example.utehy_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94245779179-4au8l28bk9qptaodkdhkkq7v5u89ka66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsz8NFEDG3rNVyt1ZCssptDQtIJK2U6us"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94245779179-4au8l28bk9qptaodkdhkkq7v5u89ka66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
