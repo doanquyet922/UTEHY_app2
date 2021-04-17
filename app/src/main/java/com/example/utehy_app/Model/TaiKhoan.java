@@ -1,6 +1,8 @@
 package com.example.utehy_app.Model;
 
-public class TaiKhoan {
+import java.io.Serializable;
+
+public class TaiKhoan implements Serializable {
     String MaSV,MatKhau,LoaiTK;
 
     public TaiKhoan() {

@@ -20,8 +20,10 @@ import com.example.utehy_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Activity_DangNhap extends AppCompatActivity {
     public static DatabaseReference mData;
@@ -35,6 +37,7 @@ SharedPreferences sharedPreferences;
         setContentView(R.layout.activity__dangnhap);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mData= FirebaseDatabase.getInstance().getReference();
+
         init();
         sharedPreferences=getSharedPreferences("dataLogin",MODE_PRIVATE);//Khởi tạo 1 file
         // lấy giá trị sharedPreferences
@@ -66,42 +69,39 @@ SharedPreferences sharedPreferences;
         String MaSV=edtDNUser.getText().toString();
         String MatKhau=edtPass.getText().toString();
 
-        mData.child("TaiKhoan").child(MaSV).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mData.child("TaiKhoan").child(MaSV).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("AAA", "onComplete: "+task.getResult().getValue());
-                    TaiKhoan tk=task.getResult().getValue(TaiKhoan.class);
-                    Log.d("AAA",tk.toString());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                {
+                    TaiKhoan tk=snapshot.getValue(TaiKhoan.class);
+
                     if(tk!=null){
-                    if(tk.getMatKhau()!=null ) {
-                        if (tk.getMatKhau().equals(MatKhau)) {
-                            Toast.makeText(Activity_DangNhap.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
-                            SharedPreferences.Editor editor=sharedPreferences.edit();
-                            editor.putString("MaSV",MaSV);
-                            editor.commit();
-                            startActivity(new Intent(Activity_DangNhap.this, ManHinhChinhActivity.class));
-                            if(cbLuuMK.isChecked()){
-//                                SharedPreferences.Editor editor=sharedPreferences.edit();
-                                editor.putString("MatKhau",MatKhau);
-                                editor.putBoolean("checked",true);
+                        if(tk.getMatKhau()!=null ) {
+                            if (tk.getMatKhau().equals(MatKhau)) {
+//                            Toast.makeText(Activity_DangNhap.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
+                                SharedPreferences.Editor editor=sharedPreferences.edit();
+                                editor.putString("MaSV",MaSV);
                                 editor.commit();
+                                if(cbLuuMK.isChecked()){
+                                    editor.putString("MatKhau",MatKhau);
+                                    editor.putBoolean("checked",true);
+                                    editor.commit();
+                                }
+                                else {
+                                    editor.remove("MatKhau");
+                                    editor.remove("checked");
+                                    editor.commit();
+                                }
+                                Intent it=new Intent(Activity_DangNhap.this, ManHinhChinhActivity.class);
+                                it.putExtra("TaiKhoan",tk);
+                                startActivity(it);
+                            } else {
+                                Toast.makeText(Activity_DangNhap.this, "Đăng nhập không thành công.", Toast.LENGTH_SHORT).show();
                             }
-                            else {
-                                editor.remove("MatKhau");
-                                editor.remove("checked");
-                                editor.commit();
-                            }
-                        } else {
+                        }
+                        else {
                             Toast.makeText(Activity_DangNhap.this, "Đăng nhập không thành công.", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                    else {
-                        Toast.makeText(Activity_DangNhap.this, "Đăng nhập không thành công.", Toast.LENGTH_SHORT).show();
-                    }
                     }else {
                         Toast.makeText(Activity_DangNhap.this, "Đăng nhập không thành công.", Toast.LENGTH_SHORT).show();
                     }
@@ -109,6 +109,10 @@ SharedPreferences sharedPreferences;
                 }
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }
