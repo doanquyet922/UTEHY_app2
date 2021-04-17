@@ -327,6 +327,7 @@
                 android:layout_marginLeft="10dp"></TextView>
 
             <ListView
+                android:id="@+id/MHC_lvMonHocVang"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"></ListView>

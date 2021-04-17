@@ -17,6 +17,15 @@ import java.util.ArrayList;
 public class MonHocVang_Adapter extends BaseAdapter {
     Activity context;
     ArrayList<MonHocVang> listMHV;
+
+    public MonHocVang_Adapter() {
+    }
+
+    public MonHocVang_Adapter(Activity context, ArrayList<MonHocVang> listMHV) {
+        this.context = context;
+        this.listMHV = listMHV;
+    }
+
     @Override
     public int getCount() {
         return listMHV.size();
@@ -43,15 +52,11 @@ public class MonHocVang_Adapter extends BaseAdapter {
 
         MonHocVang mhv = listMHV.get(position);
 
-        int soTiet = mhv.getSoTC()*20;
-        int soTietDuocNghi = (soTiet*20)/100;
-        int soBuoiDuocNghi = soTietDuocNghi/4;
-
-        tvSoBuoi.setText(mhv.getSoBuoiNghi()+"/"+soBuoiDuocNghi);
-
-        int value = (mhv.getSoBuoiNghi()/soBuoiDuocNghi)*100;
+        int value = (mhv.getSoBuoiNghi()/mhv.getSoTC())*100;
         prgb.setProgress(value);
 
+        String sb = mhv.getSoBuoiNghi()+"/"+mhv.getSoTC();
+        tvSoBuoi.setText(sb);
         tvTenMH.setText(mhv.getTenMH());
         return row;
     }
