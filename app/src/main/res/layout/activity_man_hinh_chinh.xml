@@ -283,7 +283,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_alignBottom="@+id/linearChucNang"
+        android:layout_below="@+id/linearChucNang"
         android:layout_width="match_parent"
         android:layout_height="477dp"
         android:layout_alignParentStart="true"
