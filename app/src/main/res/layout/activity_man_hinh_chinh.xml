@@ -57,7 +57,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearChucNang"
+        android:id="@+id/linearlayoutChucNang"
         android:layout_width="wrap_content"
         android:layout_height="226dp"
         android:layout_alignParentStart="true"
@@ -283,7 +283,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_below="@+id/linearChucNang"
+        android:layout_below="@id/linearlayoutChucNang"
         android:layout_width="match_parent"
         android:layout_height="477dp"
         android:layout_alignParentStart="true"
