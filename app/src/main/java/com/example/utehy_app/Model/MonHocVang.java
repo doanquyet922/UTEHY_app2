@@ -1,6 +1,9 @@
 package com.example.utehy_app.Model;
 
-public class MonHocVang {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MonHocVang implements Parcelable {
     private String maSV,maMH,tenMH;
     private int soTC,soBuoiNghi;
 
@@ -14,6 +17,26 @@ public class MonHocVang {
         this.soTC = soTC;
         this.soBuoiNghi = soBuoiNghi;
     }
+
+    protected MonHocVang(Parcel in) {
+        maSV = in.readString();
+        maMH = in.readString();
+        tenMH = in.readString();
+        soTC = in.readInt();
+        soBuoiNghi = in.readInt();
+    }
+
+    public static final Creator<MonHocVang> CREATOR = new Creator<MonHocVang>() {
+        @Override
+        public MonHocVang createFromParcel(Parcel in) {
+            return new MonHocVang(in);
+        }
+
+        @Override
+        public MonHocVang[] newArray(int size) {
+            return new MonHocVang[size];
+        }
+    };
 
     public String getMaSV() {
         return maSV;
@@ -53,5 +76,19 @@ public class MonHocVang {
 
     public void setSoBuoiNghi(int soBuoiNghi) {
         this.soBuoiNghi = soBuoiNghi;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(maSV);
+        dest.writeString(maMH);
+        dest.writeString(tenMH);
+        dest.writeInt(soTC);
+        dest.writeInt(soBuoiNghi);
     }
 }

@@ -53,7 +53,8 @@ public class MonHocVang_Adapter extends BaseAdapter {
         MonHocVang mhv = listMHV.get(position);
 
         int value = (mhv.getSoBuoiNghi()/mhv.getSoTC())*100;
-        prgb.setProgress(value);
+        prgb.setMax(mhv.getSoTC());
+        prgb.setProgress(mhv.getSoBuoiNghi());
 
         String sb = mhv.getSoBuoiNghi()+"/"+mhv.getSoTC();
         tvSoBuoi.setText(sb);

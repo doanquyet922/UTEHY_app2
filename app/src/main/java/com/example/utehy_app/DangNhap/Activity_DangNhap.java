@@ -111,7 +111,7 @@ SharedPreferences sharedPreferences;
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d("AAA", "onCancelled: "+error.getMessage());
             }
         });
     }

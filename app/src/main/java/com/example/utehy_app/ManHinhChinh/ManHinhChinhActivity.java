@@ -60,6 +60,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it=new Intent(ManHinhChinhActivity.this, DiemDanhActivity.class);
+                it.putExtra("dsMonHocVang",listMHV);
                 startActivity(it);
             }
         });
@@ -80,7 +81,7 @@ private void getUser(){
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Log.d("AAA", "onCancelled: "+error.getMessage());
                 }
             });
 
@@ -91,7 +92,6 @@ private void getUser(){
         imgBangTin = findViewById(R.id.MHC_imgBangTin);
         imgDiemDanh=findViewById(R.id.MHC_imgDiemDanh);
         tvHoTen=findViewById(R.id.MHC_tvHoTen);
-
         lvMHV = findViewById(R.id.MHC_lvMonHocVang);
         listMHV = new ArrayList<>();
         adapterMHV = new MonHocVang_Adapter(ManHinhChinhActivity.this,listMHV);
@@ -102,9 +102,9 @@ private void getUser(){
 
     private void getDataMonHocVang() {
         listMHV.clear();
+        listMHV.add(new MonHocVang("10118456","MH3","Tiếng anh chuyên ngành",3,2));
         listMHV.add(new MonHocVang("10118456","MH1","Cơ sở dữ liệu",4,2));
         listMHV.add(new MonHocVang("10118456","MH2","Giải tích",2,1));
-        listMHV.add(new MonHocVang("10118456","MH3","Tiếng anh chuyên ngành",3,2));
         listMHV.add(new MonHocVang("10118456","MH4","Thể chất 1",1,1));
     }
 
