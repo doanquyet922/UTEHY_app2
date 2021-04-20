@@ -42,9 +42,9 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     ListView lvMHV;
     ArrayList<MonHocVang> listMHV;
     MonHocVang_Adapter adapterMHV;
-    ArrayList<CTDiemDanh>arrCT=new ArrayList<>();
-    ArrayList<DiemDanh>arrDD=new ArrayList<>();
-    ArrayList<MonHoc>arrMH=new ArrayList<>();
+    ArrayList<CTDiemDanh>arrCT_Of_MaSV=new ArrayList<>();
+    ArrayList<DiemDanh>arrALL_DD=new ArrayList<>();
+    ArrayList<MonHoc>arrALL_MH=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,14 +67,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                 startActivity(new Intent(ManHinhChinhActivity.this, BangTinActivity.class));
             }
         });
-        imgDiemDanh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it=new Intent(ManHinhChinhActivity.this, DiemDanhActivity.class);
-                it.putExtra("MaSV",taiKhoan.getMaSV());
-                startActivity(it);
-            }
-        });
+
 
     }
 private void getUser(){
@@ -89,7 +82,6 @@ private void getUser(){
                         tvHoTen.setText(sinhVien.getHoTen());
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Log.d("AAA", "onCancelled: "+error.getMessage());
@@ -116,18 +108,16 @@ private void getUser(){
 //        listMHV.add(new MonHocVang("10118456","MH1","Cơ sở dữ liệu",4,2));
 //        listMHV.add(new MonHocVang("10118456","MH2","Giải tích",2,1));
 //        listMHV.add(new MonHocVang("10118456","MH4","Thể chất 1",1,1));
-//
+
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 ArrayList<DiemDanh> dsDiemDanh=new ArrayList<>();
-                for(int i=0;i<arrCT.size();i++){
-                    CTDiemDanh ct=arrCT.get(i);
-                    Log.d("BBB", "CHitiet: "+ct.toString());
-                    for (int j=0;j<arrDD.size();j++){
-                        DiemDanh dd=arrDD.get(j);
-                        Log.d("BBB", "DIemDanh: "+dd.toString());
+                for(int i=0;i<arrCT_Of_MaSV.size();i++){
+                    CTDiemDanh ct=arrCT_Of_MaSV.get(i);
+                    for (int j=0;j<arrALL_DD.size();j++){
+                        DiemDanh dd=arrALL_DD.get(j);
                         if(ct.getMaBangDiemDanh().equals(dd.getMaBangDiemDanh())){
                             dsDiemDanh.add(dd);
                         }
@@ -136,17 +126,52 @@ private void getUser(){
                 ArrayList<MonHoc>dsMonHoc=new ArrayList<>();
                 for(int i=0;i<dsDiemDanh.size();i++){
                     DiemDanh dd=dsDiemDanh.get(i);
-                    for (int j=0;j<arrMH.size();j++){
-                        MonHoc mh=arrMH.get(j);
+                    for (int j=0;j<arrALL_MH.size();j++){
+                        MonHoc mh=arrALL_MH.get(j);
                         if(dd.getMaMH().equals(mh.getMaMH())){
-                            Log.d("BBB", "MOnHoc: "+mh.getTenMH());
-                            dsMonHoc.add(mh);
+                            if (!dsMonHoc.contains(mh)){
+
+                                dsMonHoc.add(mh);
+                            }
+
                         }
                     }
                 }
-                Log.d("BBB", "size: "+dsMonHoc.size());
                 if (dsMonHoc.size()>0){
-                    Log.d("BBB", "run: ");
+                    ArrayList<MonHocVang>dsMonHocVang=new ArrayList<>();
+                    for(MonHoc mh: dsMonHoc){
+                        String maSV=taiKhoan.getMaSV();
+                        String maMH=mh.getMaMH();
+                        String tenMH=mh.getTenMH();
+                        int soTC=mh.getSoTC();
+                        int soBuoiVang=0;
+                        for (DiemDanh dd:dsDiemDanh){
+                            if(mh.getMaMH().equals(dd.getMaMH())){
+                                for(CTDiemDanh ct:arrCT_Of_MaSV){
+                                    if(dd.getMaBangDiemDanh().equals(ct.getMaBangDiemDanh()) && ct.getVangMat()==0)
+                                        soBuoiVang++;
+                                }
+                            }
+                        }
+                        MonHocVang mhv=new MonHocVang(maSV,maMH,tenMH,soTC,soBuoiVang);
+                        dsMonHocVang.add(mhv);
+                    }
+                    imgDiemDanh.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent it=new Intent(ManHinhChinhActivity.this,DiemDanhActivity.class);
+                            it.putExtra("dsMonHocVang",dsMonHocVang);
+                            startActivity(it);
+                        }
+                    });
+                    ArrayList<MonHocVang> tmp=new ArrayList<>();
+                    for(MonHocVang mhv:dsMonHocVang){
+                        if (mhv.getSoBuoiNghi()>0){
+                            tmp.add(mhv);
+                        }
+                    }
+                    adapterMHV=new MonHocVang_Adapter(ManHinhChinhActivity.this,tmp);
+                    lvMHV.setAdapter(adapterMHV);
                     handler.removeCallbacks(this);
                 }
                 else {
@@ -165,7 +190,7 @@ private void getUser(){
                 if (snapshot!=null){
                     for(DataSnapshot ds : snapshot.getChildren()) {
                         CTDiemDanh ct=ds.getValue(CTDiemDanh.class);
-                        arrCT.add(ct);
+                        arrCT_Of_MaSV.add(ct);
                     }
 //                    Log.d("BBB", "CTDiemDanh: "+snapshot.getValue()+"\nSize:"+arrCT.size());
                 }
@@ -184,7 +209,7 @@ private void getUser(){
                 if (snapshot!=null){
                     for(DataSnapshot ds : snapshot.getChildren()) {
                         DiemDanh dd=ds.getValue(DiemDanh.class);
-                        arrDD.add(dd);
+                        arrALL_DD.add(dd);
                     }
 //                    Log.d("BBB", "DiemDanh: "+snapshot.getValue()+"\nSize:"+arrDD.size());
                 }
@@ -203,7 +228,7 @@ private void getUser(){
                 if (snapshot!=null){
                     for(DataSnapshot ds : snapshot.getChildren()) {
                         MonHoc mh=ds.getValue(MonHoc.class);
-                        arrMH.add(mh);
+                        arrALL_MH.add(mh);
                     }
 //                    Log.d("BBB", "MonHoc: "+snapshot.getValue()+"\nSize:"+arrMH.size());
                 }

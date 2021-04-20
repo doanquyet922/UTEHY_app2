@@ -43,12 +43,9 @@ import java.util.Map;
 
 public class DiemDanhActivity extends AppCompatActivity {
     DatabaseReference mData;
-    ArrayList<MonHoc> arrMonHoc=new ArrayList<>();
-    ArrayList<DiemDanh>arrDiemDanh=new ArrayList<>();
-    ArrayList<CTDiemDanh> arrCTDiemDanh;
 Toolbar toolbar;
 ListView listView;
-ArrayList<MonHocVang> listMHV=new ArrayList<>();
+ArrayList<MonHocVang> arrMHV=new ArrayList<>();
     MonHocVang_Adapter adapterMHV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +54,18 @@ ArrayList<MonHocVang> listMHV=new ArrayList<>();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mData= FirebaseDatabase.getInstance().getReference();
         init();
+        getDataMonHocVang();
         Events();
     }
 
     private void Events() {
-        adapterMHV = new MonHocVang_Adapter(DiemDanhActivity.this,listMHV);
+        adapterMHV = new MonHocVang_Adapter(DiemDanhActivity.this,arrMHV);
         listView.setAdapter(adapterMHV);
     }
-
+private void getDataMonHocVang(){
+        Intent it=getIntent();
+        arrMHV=it.getParcelableArrayListExtra("dsMonHocVang");
+}
     private void init() {
         toolbar=(Toolbar) findViewById(R.id.DiemDanh_toolbar);
         setSupportActionBar(toolbar);
@@ -77,7 +78,7 @@ ArrayList<MonHocVang> listMHV=new ArrayList<>();
             }
         });
         listView=findViewById(R.id.DiemDanh_lvMonHocVang);
-        arrCTDiemDanh=new ArrayList<>();
+
 
     }
 
