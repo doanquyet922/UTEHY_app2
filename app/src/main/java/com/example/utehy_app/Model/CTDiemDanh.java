@@ -1,5 +1,10 @@
 package com.example.utehy_app.Model;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
 public class CTDiemDanh {
     String maBangDiemDanh,maSV;
     int vangMat;
@@ -11,6 +16,15 @@ public class CTDiemDanh {
     }
 
     public CTDiemDanh() {
+    }
+
+    @Override
+    public String toString() {
+        return "CTDiemDanh{" +
+                "maBangDiemDanh='" + maBangDiemDanh + '\'' +
+                ", maSV='" + maSV + '\'' +
+                ", vangMat=" + vangMat +
+                '}';
     }
 
     public String getMaBangDiemDanh() {
@@ -36,4 +50,6 @@ public class CTDiemDanh {
     public void setVangMat(int vangMat) {
         this.vangMat = vangMat;
     }
+
+
 }
