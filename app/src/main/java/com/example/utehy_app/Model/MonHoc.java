@@ -1,12 +1,13 @@
 package com.example.utehy_app.Model;
 
 public class MonHoc {
-    String maMH,tenMH,soTC;
+    String maMH,tenMH;
+    int soTC;
 
     public MonHoc() {
     }
 
-    public MonHoc(String maMH, String tenMH, String soTC) {
+    public MonHoc(String maMH, String tenMH, int soTC) {
         this.maMH = maMH;
         this.tenMH = tenMH;
         this.soTC = soTC;
@@ -28,11 +29,11 @@ public class MonHoc {
         this.tenMH = tenMH;
     }
 
-    public String getSoTC() {
+    public int getSoTC() {
         return soTC;
     }
 
-    public void setSoTC(String soTC) {
+    public void setSoTC(int soTC) {
         this.soTC = soTC;
     }
 }

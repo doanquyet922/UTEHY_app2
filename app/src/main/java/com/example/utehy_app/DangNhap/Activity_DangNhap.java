@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Activity_DangNhap extends AppCompatActivity {
-    public static DatabaseReference mData;
+    DatabaseReference mData;
 EditText edtDNUser,edtPass;
 Button btnDN;
 CheckBox cbLuuMK;
@@ -74,7 +74,6 @@ SharedPreferences sharedPreferences;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 {
                     TaiKhoan tk=snapshot.getValue(TaiKhoan.class);
-
                     if(tk!=null){
                         if(tk.getMatKhau()!=null ) {
                             if (tk.getMatKhau().equals(MatKhau)) {

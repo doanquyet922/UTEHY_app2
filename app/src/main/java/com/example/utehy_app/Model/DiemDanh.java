@@ -14,6 +14,17 @@ public class DiemDanh {
     public DiemDanh() {
     }
 
+    @Override
+    public String toString() {
+        return "DiemDanh{" +
+                "maBangDiemDanh='" + maBangDiemDanh + '\'' +
+                ", maLop='" + maLop + '\'' +
+                ", maMH='" + maMH + '\'' +
+                ", gvDay='" + gvDay + '\'' +
+                ", ngay='" + ngay + '\'' +
+                '}';
+    }
+
     public String getMaBangDiemDanh() {
         return maBangDiemDanh;
     }
