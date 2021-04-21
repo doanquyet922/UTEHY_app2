@@ -84,7 +84,6 @@ private void getUser(){
                     Log.d("AAA", "onCancelled: "+error.getMessage());
                 }
             });
-
     }
 
 }
