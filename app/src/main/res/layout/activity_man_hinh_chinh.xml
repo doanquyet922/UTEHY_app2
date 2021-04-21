@@ -308,14 +308,18 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:layout_marginLeft="10dp"></TextView>
+
             <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/MHC_tvLichHoc"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hôm nay bạn không có buổi học nào"
-                android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"></TextView>
 
+                android:textStyle="bold"
+                android:textColor="#BC1C1C"
+                android:textSize="20sp"
+                ></TextView>
             <TextView
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
@@ -359,8 +363,7 @@
             <GridView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:numColumns="2"
-                ></GridView>
+                android:numColumns="2"></GridView>
         </LinearLayout>
     </ScrollView>
 

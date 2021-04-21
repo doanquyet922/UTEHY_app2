@@ -30,7 +30,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     DatabaseReference mData;
@@ -38,8 +45,11 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
     TextView tvHoTen;
+    TextView tvLichHoc;
 
+    SinhVien sv_hientai = new SinhVien();
     ListView lvMHV;
+
     ArrayList<MonHocVang> listMHV;
     MonHocVang_Adapter adapterMHV;
     public static ArrayList<CTDiemDanh>arrCT_Of_MaSV=new ArrayList<>();
@@ -57,6 +67,9 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         getDataDienDanh();
         getDataMonHoc();
         getDataMonHocVang();
+
+        getLichHocHomNay();
+
     }
 
     private void Events() {
@@ -99,6 +112,74 @@ private void getUser(){
         adapterMHV = new MonHocVang_Adapter(ManHinhChinhActivity.this,listMHV);
         lvMHV.setAdapter(adapterMHV);
 
+        tvLichHoc = findViewById(R.id.MHC_tvLichHoc);
+
+
+    }
+
+    private void getLichHocHomNay(){
+
+
+        String url_base = "https://utehyapp-default-rtdb.firebaseio.com/LichHoc/";
+        DatabaseReference data = FirebaseDatabase.getInstance().getReferenceFromUrl("https://utehyapp-default-rtdb.firebaseio.com/LichHoc/LH101185/TKB");
+
+        data.child("T4").child("Sang").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n");
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        data.child("T4").child("Chieu").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tvLichHoc.append("CHIỀU : "+snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
+
+
+
+    private String getThuHienTai(String date){
+        String ngay = "";
+        switch (date){
+            case "Mon":
+                ngay = "T2";
+                break;
+            case "Tue":
+                ngay = "T3";
+                break;
+            case "Wed":
+                ngay = "T4";
+                break;
+            case "Thu":
+                ngay = "T5";
+                break;
+            case "Fri":
+                ngay = "T6";
+                break;
+            case "Sat":
+                ngay = "T7";
+                break;
+            case "Sun":
+                ngay = "T8";
+                break;
+        }
+        return ngay;
     }
 
     private void getDataMonHocVang() {
