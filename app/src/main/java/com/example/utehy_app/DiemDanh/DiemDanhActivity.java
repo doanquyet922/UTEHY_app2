@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -61,6 +62,14 @@ ArrayList<MonHocVang> arrMHV=new ArrayList<>();
     private void Events() {
         adapterMHV = new MonHocVang_Adapter(DiemDanhActivity.this,arrMHV);
         listView.setAdapter(adapterMHV);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent it=new Intent(DiemDanhActivity.this,CTDiemDanhActivity.class);
+                it.putExtra("maMH",arrMHV.get(position).getMaMH());
+                startActivity(it);
+            }
+        });
     }
 private void getDataMonHocVang(){
         Intent it=getIntent();

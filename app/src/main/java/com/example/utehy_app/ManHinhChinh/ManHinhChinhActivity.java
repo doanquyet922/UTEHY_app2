@@ -42,8 +42,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     ListView lvMHV;
     ArrayList<MonHocVang> listMHV;
     MonHocVang_Adapter adapterMHV;
-    ArrayList<CTDiemDanh>arrCT_Of_MaSV=new ArrayList<>();
-    ArrayList<DiemDanh>arrALL_DD=new ArrayList<>();
+    public static ArrayList<CTDiemDanh>arrCT_Of_MaSV=new ArrayList<>();
+    public static ArrayList<DiemDanh>arrALL_DD=new ArrayList<>();
     ArrayList<MonHoc>arrALL_MH=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
