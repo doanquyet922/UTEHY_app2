@@ -146,11 +146,15 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     String maLichHocLop = "LH"+sinhVien.getMaLop();
                     String path = url_base+maLichHocLop+"/TKB";
                     Log.d("path",path);
+                    Date date = new Date();
+                    String date_string = date.toString();
+                    String thu_cut = date_string.substring(0,3);
+                    String thu = getThuHienTai(thu_cut);
                     DatabaseReference data = FirebaseDatabase.getInstance().getReferenceFromUrl(path);
-                    data.child("T4").child("Sang").addValueEventListener(new ValueEventListener() {
+                    data.child(thu).child("Sang").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n");
+                            tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n\n");
 
                         }
 
@@ -160,7 +164,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                         }
                     });
 
-                    data.child("T4").child("Chieu").addValueEventListener(new ValueEventListener() {
+                    data.child(thu).child("Chieu").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             tvLichHoc.append("CHIỀU : "+snapshot.getValue().toString());
