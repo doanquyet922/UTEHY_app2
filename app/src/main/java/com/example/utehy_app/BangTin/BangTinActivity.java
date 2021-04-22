@@ -23,6 +23,6 @@ public class BangTinActivity extends AppCompatActivity {
         wv = findViewById(R.id.BangTin_webView);
         WebSettings webSettings = wv.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        wv.loadUrl("http://www.utehy.edu.vn/#/");
+        wv.loadUrl("http://fit.utehy.edu.vn/");
     }
 }

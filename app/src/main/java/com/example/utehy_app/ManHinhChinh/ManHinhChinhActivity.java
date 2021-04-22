@@ -118,8 +118,9 @@ private void getUser(){
     }
 
     private void getLichHocHomNay(){
-        String url_base = "https://utehyapp-default-rtdb.firebaseio.com/LichHoc/";
 
+
+        String url_base = "https://utehyapp-default-rtdb.firebaseio.com/LichHoc/";
         DatabaseReference data = FirebaseDatabase.getInstance().getReferenceFromUrl("https://utehyapp-default-rtdb.firebaseio.com/LichHoc/LH101185/TKB");
 
         data.child("T4").child("Sang").addValueEventListener(new ValueEventListener() {
