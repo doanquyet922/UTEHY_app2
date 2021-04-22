@@ -150,7 +150,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     data.child("T4").child("Sang").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n");
+                            tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n\n");
 
                         }
 
