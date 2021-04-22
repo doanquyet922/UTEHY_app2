@@ -93,6 +93,7 @@ private void getUser(){
                     sinhVien=snapshot.getValue(SinhVien.class);
                     if(sinhVien !=null && sinhVien.getHoTen()!=null){
                         tvHoTen.setText(sinhVien.getHoTen());
+                        Log.d("sinhvien_get",sinhVien.toString());
                     }
                 }
                 @Override
@@ -120,33 +121,52 @@ private void getUser(){
     private void getLichHocHomNay(){
 
 
-        String url_base = "https://utehyapp-default-rtdb.firebaseio.com/LichHoc/";
-        DatabaseReference data = FirebaseDatabase.getInstance().getReferenceFromUrl("https://utehyapp-default-rtdb.firebaseio.com/LichHoc/LH101185/TKB");
 
-        data.child("T4").child("Sang").addValueEventListener(new ValueEventListener() {
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n");
+            public void run() {
+                if(sinhVien.getMaLop()!=null){
+                    String url_base = "https://utehyapp-default-rtdb.firebaseio.com/LichHoc/";
+                    String maLichHocLop = "LH"+sinhVien.getMaLop();
+                    String path = url_base+maLichHocLop+"/TKB";
+                    Log.d("path",path);
+                    DatabaseReference data = FirebaseDatabase.getInstance().getReferenceFromUrl(path);
+                    data.child("T4").child("Sang").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n");
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    data.child("T4").child("Chieu").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            tvLichHoc.append("CHIỀU : "+snapshot.getValue().toString());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    handler.removeCallbacks(this::run);
+
+                }else {
+                    handler.postDelayed(this,500);
+                }
 
             }
+        },500);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        data.child("T4").child("Chieu").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                tvLichHoc.append("CHIỀU : "+snapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
 
@@ -183,11 +203,7 @@ private void getUser(){
     }
 
     private void getDataMonHocVang() {
-//        listMHV.clear();
-//        listMHV.add(new MonHocVang("10118456","MH3","Tiếng anh chuyên ngành",3,2));
-//        listMHV.add(new MonHocVang("10118456","MH1","Cơ sở dữ liệu",4,2));
-//        listMHV.add(new MonHocVang("10118456","MH2","Giải tích",2,1));
-//        listMHV.add(new MonHocVang("10118456","MH4","Thể chất 1",1,1));
+
 
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
@@ -272,7 +288,7 @@ private void getUser(){
                         CTDiemDanh ct=ds.getValue(CTDiemDanh.class);
                         arrCT_Of_MaSV.add(ct);
                     }
-//                    Log.d("BBB", "CTDiemDanh: "+snapshot.getValue()+"\nSize:"+arrCT.size());
+
                 }
             }
             @Override

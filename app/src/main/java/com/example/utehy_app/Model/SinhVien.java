@@ -62,4 +62,16 @@ public class SinhVien {
     public void setMaLop(String maLop) {
         this.maLop = maLop;
     }
+
+    @Override
+    public String toString() {
+        return "SinhVien{" +
+                "maSV='" + maSV + '\'' +
+                ", hoTen='" + hoTen + '\'' +
+                ", gioiTinh='" + gioiTinh + '\'' +
+                ", namSinh='" + namSinh + '\'' +
+                ", diaChi='" + diaChi + '\'' +
+                ", maLop='" + maLop + '\'' +
+                '}';
+    }
 }
