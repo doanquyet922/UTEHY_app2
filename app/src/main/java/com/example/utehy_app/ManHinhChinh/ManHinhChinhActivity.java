@@ -1,6 +1,12 @@
 package com.example.utehy_app.ManHinhChinh;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,11 +20,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import com.example.utehy_app.BangTin.BangTinActivity;
 import com.example.utehy_app.CustomAdapter.MonHocVang_Adapter;
 import com.example.utehy_app.DangNhap.Activity_DangNhap;
 import com.example.utehy_app.DiemDanh.DiemDanhActivity;
+import com.example.utehy_app.MainActivity;
 import com.example.utehy_app.Model.CTDiemDanh;
 import com.example.utehy_app.Model.DiemDanh;
 import com.example.utehy_app.Model.MonHoc;
@@ -44,7 +52,7 @@ import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     DatabaseReference mData;
-    ImageView imgBangTin,imgDiemDanh;
+    ImageView imgBangTin,imgDiemDanh,imgHoatDong;
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
     TextView tvHoTen;
@@ -88,10 +96,18 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             }
         });
 
+        imgHoatDong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
 
 
     }
+
+
+
     private void getUser(){
         Intent it=getIntent();
         taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
@@ -129,6 +145,10 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         adapter_gridView_tinTuc = new Adapter_GridView_TinTuc(ManHinhChinhActivity.this,listTinTucUTEHY);
         lvTinTuc.setAdapter(adapter_gridView_tinTuc);
 
+        imgHoatDong = findViewById(R.id.MHC_imgHoatDong);
+
+
+
 
     }
 
@@ -156,7 +176,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n\n");
 
-                        }
+                        } 
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

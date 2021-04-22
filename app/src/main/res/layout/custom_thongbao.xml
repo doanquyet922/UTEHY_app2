@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/them_vien"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_student"></ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+
+                android:id="@+id/customTB_tvTenNguoiDang"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đào Thị Lan Phương"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"></TextView>
+            <TextView
+                android:id="@+id/customTB_tvNgayDang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16:00, 22/04/2021"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/customTB_tvNoiDungTB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:layout_marginTop="5dp"
+        android:text="Từ một bài viết nhắc nhở của Báo Nhân dân, khủng long T-rex hí hứng chụp lại 1 đoạn bài viết và đăng lên fanpage: Hóng kèo kiện báo Nhân dân. Thật đáng buồn khi một số kẻ có khiếm khuyết trong suy nghĩ lại nghĩ rằng người khác cũng giống như mình. Như báo Nhân dân đã từng nhận xét về T-rex: "></TextView>
+    <ImageView
+        android:id="@+id/customTB_imgAnh"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        android:background="#000"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/customTB_linearTraLoi"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_reply"></ImageView>
+        <TextView
+            android:id="@+id/customTB_tvTraLoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trả lời (5)"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#AE1B1B"
+            android:textSize="20sp"></TextView>
+
+    </LinearLayout>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="─────────────────────────────────────────"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#000"></TextView>-->
+
+</LinearLayout>
