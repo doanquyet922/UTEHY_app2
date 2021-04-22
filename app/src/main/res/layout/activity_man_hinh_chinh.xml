@@ -360,10 +360,12 @@
                     ></ImageView>
             </LinearLayout>
 
-            <GridView
+            <ListView
+                android:layout_marginTop="10dp"
+                android:id="@+id/MHC_lvTinTuc"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:numColumns="2"></GridView>
+                ></ListView>
         </LinearLayout>
     </ScrollView>
 

@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import com.example.utehy_app.Model.MonHoc;
 import com.example.utehy_app.Model.MonHocVang;
 import com.example.utehy_app.Model.SinhVien;
 import com.example.utehy_app.Model.TaiKhoan;
+import com.example.utehy_app.Model.TinTucUTEHY;
 import com.example.utehy_app.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,9 +49,13 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     SinhVien sinhVien;
     TextView tvHoTen;
     TextView tvLichHoc;
+    ListView lvTinTuc;
 
     SinhVien sv_hientai = new SinhVien();
     ListView lvMHV;
+
+    ArrayList<TinTucUTEHY> listTinTucUTEHY;
+    Adapter_GridView_TinTuc adapter_gridView_tinTuc;
 
     ArrayList<MonHocVang> listMHV;
     MonHocVang_Adapter adapterMHV;
@@ -69,7 +76,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         getDataMonHocVang();
 
         getLichHocHomNay();
-
+        getDSTinTucUTEHY();
     }
 
     private void Events() {
@@ -82,8 +89,10 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         });
 
 
+
+
     }
-private void getUser(){
+    private void getUser(){
         Intent it=getIntent();
         taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
         if (taiKhoan!=null && !taiKhoan.getMaSV().equals("")){
@@ -114,6 +123,11 @@ private void getUser(){
         lvMHV.setAdapter(adapterMHV);
 
         tvLichHoc = findViewById(R.id.MHC_tvLichHoc);
+
+        lvTinTuc = findViewById(R.id.MHC_lvTinTuc);
+        listTinTucUTEHY = new ArrayList<>();
+        adapter_gridView_tinTuc = new Adapter_GridView_TinTuc(ManHinhChinhActivity.this,listTinTucUTEHY);
+        lvTinTuc.setAdapter(adapter_gridView_tinTuc);
 
 
     }
@@ -171,8 +185,6 @@ private void getUser(){
 
 
     }
-
-
 
     private String getThuHienTai(String date){
         String ngay = "";
@@ -329,6 +341,30 @@ private void getUser(){
 //                    Log.d("BBB", "MonHoc: "+snapshot.getValue()+"\nSize:"+arrMH.size());
                 }
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void getDSTinTucUTEHY(){
+        mData.child("TinTucUTEHY").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot!=null){
+                    for(DataSnapshot ds : snapshot.getChildren()) {
+                        TinTucUTEHY tt=ds.getValue(TinTucUTEHY.class);
+                        listTinTucUTEHY.add(tt);
+                    }
+
+                    adapter_gridView_tinTuc.notifyDataSetChanged();
+
+                    Log.d("tintucute",listTinTucUTEHY.size()+"");
+
+                }
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
