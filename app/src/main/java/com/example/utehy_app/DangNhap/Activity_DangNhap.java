@@ -44,6 +44,9 @@ SharedPreferences sharedPreferences;
         edtDNUser.setText(sharedPreferences.getString("MaSV",""));
         edtPass.setText(sharedPreferences.getString("MatKhau",""));
         cbLuuMK.setChecked(sharedPreferences.getBoolean("checked",false));
+//        if(!edtPass.getText().toString().equals("") && !edtDNUser.getText().toString().equals("")){
+//            CheckDangNhap();
+//        }
         events();
     }
 
