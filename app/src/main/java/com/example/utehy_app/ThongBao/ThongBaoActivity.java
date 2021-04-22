@@ -54,10 +54,10 @@ ThongBaoAdapter thongBaoAdapter;
     private void getALLThongBao(){
         Intent it=getIntent();
         String maLop=it.getStringExtra("maLop");
-        Log.d("maLop", "getALLThongBao: "+maLop);
-        mData.child("THongBao").orderByChild("maLop").equalTo("maLop",maLop).addListenerForSingleValueEvent(new ValueEventListener() {
+        mData.child("THongBao").orderByChild("maLop").equalTo(maLop).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 arrAllTBao.clear();
                 for(DataSnapshot ds:snapshot.getChildren()){
                     ThongBao tb=ds.getValue(ThongBao.class);
