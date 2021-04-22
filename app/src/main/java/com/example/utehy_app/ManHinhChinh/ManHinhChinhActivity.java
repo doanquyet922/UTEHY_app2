@@ -27,6 +27,7 @@ import com.example.utehy_app.Model.SinhVien;
 import com.example.utehy_app.Model.TaiKhoan;
 import com.example.utehy_app.Model.TinTucUTEHY;
 import com.example.utehy_app.R;
+import com.example.utehy_app.ThongBao.ThongBaoActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,19 +45,18 @@ import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     DatabaseReference mData;
-    ImageView imgBangTin,imgDiemDanh;
+    ImageView imgBangTin,imgDiemDanh,imgThongBao;
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
     TextView tvHoTen;
     TextView tvLichHoc;
     ListView lvTinTuc;
 
-    SinhVien sv_hientai = new SinhVien();
+
     ListView lvMHV;
 
     ArrayList<TinTucUTEHY> listTinTucUTEHY;
     Adapter_GridView_TinTuc adapter_gridView_tinTuc;
-
     ArrayList<MonHocVang> listMHV;
     MonHocVang_Adapter adapterMHV;
     public static ArrayList<CTDiemDanh>arrCT_Of_MaSV=new ArrayList<>();
@@ -74,7 +74,6 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         getDataDienDanh();
         getDataMonHoc();
         getDataMonHocVang();
-
         getLichHocHomNay();
         getDSTinTucUTEHY();
     }
@@ -85,6 +84,14 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ManHinhChinhActivity.this, BangTinActivity.class));
+            }
+        });
+        imgThongBao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(ManHinhChinhActivity.this, ThongBaoActivity.class);
+                it.putExtra("maLop",sinhVien.getMaLop());
+                startActivity(it);
             }
         });
 
@@ -116,6 +123,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     private void Init() {
         imgBangTin = findViewById(R.id.MHC_imgBangTin);
         imgDiemDanh=findViewById(R.id.MHC_imgDiemDanh);
+        imgThongBao=findViewById(R.id.MHC_imgThongBao);
+
         tvHoTen=findViewById(R.id.MHC_tvHoTen);
         lvMHV = findViewById(R.id.MHC_lvMonHocVang);
         listMHV = new ArrayList<>();

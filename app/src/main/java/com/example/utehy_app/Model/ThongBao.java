@@ -2,7 +2,6 @@ package com.example.utehy_app.Model;
 
 public class ThongBao {
     String maTB,maSV,maLop,noiDung,ngayGui;
-
     public ThongBao(String maTB, String maSV, String maLop, String noiDung, String ngayGui) {
         this.maTB = maTB;
         this.maSV = maSV;
