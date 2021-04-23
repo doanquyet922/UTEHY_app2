@@ -154,8 +154,11 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     data.child(thu).child("Sang").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            tvLichHoc.append("SÁNG : "+snapshot.getValue().toString()+"\n\n");
-
+                            if(snapshot!=null) {
+                                tvLichHoc.append("SÁNG : " + snapshot.getValue().toString() + "\n\n");
+                            }else{
+                                tvLichHoc.append("SÁNG : nghỉ");
+                            }
                         }
 
                         @Override
@@ -167,7 +170,11 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     data.child(thu).child("Chieu").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            tvLichHoc.append("CHIỀU : "+snapshot.getValue().toString());
+                            if(snapshot!=null) {
+                                tvLichHoc.append("CHIỀU : " + snapshot.getValue().toString() + "\n\n");
+                            }else{
+                                tvLichHoc.append("CHIỀU : nghỉ");
+                            }
                         }
 
                         @Override
