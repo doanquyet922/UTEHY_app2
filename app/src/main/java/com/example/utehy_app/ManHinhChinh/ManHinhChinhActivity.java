@@ -52,7 +52,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     ImageView imgBangTin,imgDiemDanh,imgThongBao,imgQuanTri,imgHoatDong,imgCongTT,imgEclass;
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
-    TextView tvHoTen;
+    TextView tvHoTen,tvQuanTri;
     TextView tvLichHoc;
     ListView lvTinTuc;
 
@@ -137,6 +137,13 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     private void getUser(){
         Intent it=getIntent();
         taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
+        if(!taiKhoan.getLoaiTK().equals("qtv")){
+            imgQuanTri.setVisibility(View.GONE);
+            tvQuanTri.setVisibility(View.GONE);
+        }else{
+            imgQuanTri.setVisibility(View.VISIBLE);
+            tvQuanTri.setVisibility(View.VISIBLE);
+        }
         if (taiKhoan!=null && !taiKhoan.getMaSV().equals("")){
             mData.child("SinhVien").child(taiKhoan.getMaSV()).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -145,6 +152,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     if(sinhVien !=null && sinhVien.getHoTen()!=null){
                         tvHoTen.setText(sinhVien.getHoTen());
                         Log.d("sinhvien_get",sinhVien.toString());
+
                     }
                 }
                 @Override
@@ -168,6 +176,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         lvMHV.setAdapter(adapterMHV);
 
         tvLichHoc = findViewById(R.id.MHC_tvLichHoc);
+        tvQuanTri = findViewById(R.id.MHC_tvQuanTri);
 
         lvTinTuc = findViewById(R.id.MHC_lvTinTuc);
         listTinTucUTEHY = new ArrayList<>();

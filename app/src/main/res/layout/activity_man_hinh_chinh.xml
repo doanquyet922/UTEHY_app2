@@ -270,6 +270,7 @@
                     android:src="@drawable/ic_quantri"></ImageView>
 
                 <TextView
+                    android:id="@+id/MHC_tvQuanTri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
