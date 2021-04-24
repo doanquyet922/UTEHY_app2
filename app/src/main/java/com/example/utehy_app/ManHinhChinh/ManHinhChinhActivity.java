@@ -93,7 +93,9 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         imgThongBao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ManHinhChinhActivity.this, TatCaThongBao_Activity.class));
+                Intent it=new Intent(ManHinhChinhActivity.this, TatCaThongBao_Activity.class);
+                it.putExtra("maLop",sinhVien.getMaLop());
+                startActivity(it);
             }
         });
 
@@ -142,10 +144,6 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     }
 
     private void getLichHocHomNay(){
-
-
-
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

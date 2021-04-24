@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,11 +57,12 @@ public class TatCaThongBao_Activity extends AppCompatActivity {
         lvTB = findViewById(R.id.AllThongBao_lvTB);
         lvTB.setAdapter(allThongBao_adapter);
         getDataThongBao();
-
     }
 
     private void getDataThongBao(){
-        mData.child("THongBao").addValueEventListener(new ValueEventListener() {
+        Intent it=getIntent();
+        String maLop=it.getStringExtra("maLop");
+        mData.child("THongBao").orderByChild("maLop").equalTo(maLop).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){
