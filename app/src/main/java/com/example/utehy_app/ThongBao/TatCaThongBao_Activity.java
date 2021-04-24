@@ -60,7 +60,7 @@ public class TatCaThongBao_Activity extends AppCompatActivity {
     }
 
     private void getDataThongBao(){
-        mData.child("THongBao").addValueEventListener(new ValueEventListener() {
+        mData.child("THongBao").orderByChild("maLop").equalTo("101185").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){

@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTEHY_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ThongBao.TatCaThongBao_Activity"></activity>
+        <activity android:name=".Eclass.Eclass_Activity"></activity>
+        <activity android:name=".CongThongTin.CongThongTin_Activity" />
+        <activity android:name=".HoatDong.HoatDong_Activity" />
+        <activity android:name=".QuanTriVien.QuanTri_Activity" />
+        <activity android:name=".ThongBao.TatCaThongBao_Activity" />
         <activity android:name=".ThongBao.ThongBaoActivity" />
         <activity android:name=".DiemDanh.CTDiemDanhActivity" />
         <activity android:name=".DiemDanh.DiemDanhActivity" />
