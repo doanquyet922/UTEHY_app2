@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#5A5353"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:textColor="#FFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn từ thiết bị"
+        android:textSize="20sp"
+        android:id="@+id/tvChonTuThietBi"
+        android:layout_marginTop="15dp"></TextView>
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#FFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chụp ảnh"
+        android:textSize="20sp"
+        android:id="@+id/tvChupAnh"
+        android:layout_marginTop="15dp"></TextView>
+
+</LinearLayout>

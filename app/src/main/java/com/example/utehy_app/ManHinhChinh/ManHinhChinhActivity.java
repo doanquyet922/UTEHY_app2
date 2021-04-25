@@ -56,7 +56,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     TextView tvLichHoc;
     ListView lvTinTuc;
 
-    SinhVien sv_hientai = new SinhVien();
+    public static SinhVien sv_hientai;
     ListView lvMHV;
 
     ArrayList<TinTucUTEHY> listTinTucUTEHY;
@@ -152,7 +152,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     if(sinhVien !=null && sinhVien.getHoTen()!=null){
                         tvHoTen.setText(sinhVien.getHoTen());
                         Log.d("sinhvien_get",sinhVien.toString());
-
+                        sv_hientai = snapshot.getValue(SinhVien.class);
                     }
                 }
                 @Override

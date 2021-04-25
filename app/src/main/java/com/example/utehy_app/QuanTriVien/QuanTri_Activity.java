@@ -3,22 +3,36 @@ package com.example.utehy_app.QuanTriVien;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
+import com.example.utehy_app.GuiThongBao.Activity_GuiThongBao;
+import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.R;
 
 public class QuanTri_Activity extends AppCompatActivity {
     Toolbar toolbar;
+    ImageView imgGuiThongBao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_tri);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
         Init();
+        Events();
+    }
+
+    private void Events() {
+        imgGuiThongBao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QuanTri_Activity.this, Activity_GuiThongBao.class));
+            }
+        });
     }
 
     private void Init() {
@@ -29,8 +43,10 @@ public class QuanTri_Activity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(QuanTri_Activity.this, ManHinhChinhActivity.class));
             }
         });
+
+        imgGuiThongBao = findViewById(R.id.QuanTri_imgThongBao);
     }
 }
