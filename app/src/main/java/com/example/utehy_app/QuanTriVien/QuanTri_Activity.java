@@ -12,10 +12,11 @@ import android.widget.ImageView;
 import com.example.utehy_app.GuiThongBao.Activity_GuiThongBao;
 import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.R;
+import com.example.utehy_app.ThemTaiKhoan.Activity_ThemTaiKhoan;
 
 public class QuanTri_Activity extends AppCompatActivity {
     Toolbar toolbar;
-    ImageView imgGuiThongBao;
+    ImageView imgGuiThongBao,imgThemTaiKhoan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,13 @@ public class QuanTri_Activity extends AppCompatActivity {
                 startActivity(new Intent(QuanTri_Activity.this, Activity_GuiThongBao.class));
             }
         });
+
+        imgThemTaiKhoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QuanTri_Activity.this, Activity_ThemTaiKhoan.class));
+            }
+        });
     }
 
     private void Init() {
@@ -48,5 +56,6 @@ public class QuanTri_Activity extends AppCompatActivity {
         });
 
         imgGuiThongBao = findViewById(R.id.QuanTri_imgThongBao);
+        imgThemTaiKhoan = findViewById(R.id.QuanTri_imgTaiKhoan);
     }
 }

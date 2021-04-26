@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTEHY_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GuiThongBao.Activity_GuiThongBao"></activity>
+        <activity android:name=".ThemTaiKhoan.Activity_ThemTaiKhoan"></activity>
+        <activity android:name=".GuiThongBao.Activity_GuiThongBao" />
         <activity android:name=".ThongBao.TatCaThongBao_Activity" />
         <activity android:name=".Eclass.Eclass_Activity" />
         <activity android:name=".ThongBao.ThongBaoActivity" />
