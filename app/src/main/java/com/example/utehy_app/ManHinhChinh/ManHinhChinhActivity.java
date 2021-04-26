@@ -16,9 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.utehy_app.BangTin.BangTinActivity;
+import com.example.utehy_app.CongThongTin.CongThongTin_Activity;
 import com.example.utehy_app.CustomAdapter.MonHocVang_Adapter;
 import com.example.utehy_app.DangNhap.Activity_DangNhap;
 import com.example.utehy_app.DiemDanh.DiemDanhActivity;
+import com.example.utehy_app.Eclass.Eclass_Activity;
+import com.example.utehy_app.HoatDong.HoatDong_Activity;
 import com.example.utehy_app.Model.CTDiemDanh;
 import com.example.utehy_app.Model.DiemDanh;
 import com.example.utehy_app.Model.MonHoc;
@@ -26,6 +29,7 @@ import com.example.utehy_app.Model.MonHocVang;
 import com.example.utehy_app.Model.SinhVien;
 import com.example.utehy_app.Model.TaiKhoan;
 import com.example.utehy_app.Model.TinTucUTEHY;
+import com.example.utehy_app.QuanTriVien.QuanTri_Activity;
 import com.example.utehy_app.R;
 import com.example.utehy_app.ThongBao.TatCaThongBao_Activity;
 import com.google.firebase.database.DataSnapshot;
@@ -45,14 +49,14 @@ import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     DatabaseReference mData;
-    ImageView imgBangTin,imgDiemDanh,imgThongBao;
+    ImageView imgBangTin,imgDiemDanh,imgThongBao,imgQuanTri,imgHoatDong,imgCongTT,imgEclass;
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
-    TextView tvHoTen;
+    TextView tvHoTen,tvQuanTri;
     TextView tvLichHoc;
     ListView lvTinTuc;
 
-    SinhVien sv_hientai = new SinhVien();
+    public static SinhVien sv_hientai;
     ListView lvMHV;
 
     ArrayList<TinTucUTEHY> listTinTucUTEHY;
@@ -82,6 +86,13 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 
     private void Events() {
         getUser();
+
+        imgQuanTri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ManHinhChinhActivity.this, QuanTri_Activity.class));
+            }
+        });
         imgBangTin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,11 +111,39 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         });
 
 
+        imgHoatDong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ManHinhChinhActivity.this, HoatDong_Activity.class));
+            }
+        });
+
+        imgCongTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ManHinhChinhActivity.this, CongThongTin_Activity.class));
+            }
+        });
+
+        imgEclass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ManHinhChinhActivity.this, Eclass_Activity.class));
+            }
+        });
+
 
     }
     private void getUser(){
         Intent it=getIntent();
         taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
+        if(!taiKhoan.getLoaiTK().equals("qtv")){
+            imgQuanTri.setVisibility(View.GONE);
+            tvQuanTri.setVisibility(View.GONE);
+        }else{
+            imgQuanTri.setVisibility(View.VISIBLE);
+            tvQuanTri.setVisibility(View.VISIBLE);
+        }
         if (taiKhoan!=null && !taiKhoan.getMaSV().equals("")){
             mData.child("SinhVien").child(taiKhoan.getMaSV()).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -113,6 +152,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     if(sinhVien !=null && sinhVien.getHoTen()!=null){
                         tvHoTen.setText(sinhVien.getHoTen());
                         Log.d("sinhvien_get",sinhVien.toString());
+                        sv_hientai = snapshot.getValue(SinhVien.class);
                     }
                 }
                 @Override
@@ -126,6 +166,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     private void Init() {
         imgBangTin = findViewById(R.id.MHC_imgBangTin);
         imgDiemDanh=findViewById(R.id.MHC_imgDiemDanh);
+        imgCongTT=findViewById(R.id.MHC_imgCongTT);
+        imgEclass=findViewById(R.id.MHC_imgEclass);
         imgThongBao=findViewById(R.id.MHC_imgThongBao);
         tvHoTen=findViewById(R.id.MHC_tvHoTen);
         lvMHV = findViewById(R.id.MHC_lvMonHocVang);
@@ -134,12 +176,15 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         lvMHV.setAdapter(adapterMHV);
 
         tvLichHoc = findViewById(R.id.MHC_tvLichHoc);
+        tvQuanTri = findViewById(R.id.MHC_tvQuanTri);
 
         lvTinTuc = findViewById(R.id.MHC_lvTinTuc);
         listTinTucUTEHY = new ArrayList<>();
         adapter_gridView_tinTuc = new Adapter_GridView_TinTuc(ManHinhChinhActivity.this,listTinTucUTEHY);
         lvTinTuc.setAdapter(adapter_gridView_tinTuc);
 
+        imgQuanTri = findViewById(R.id.MHC_imgQuanTri);
+        imgHoatDong = findViewById(R.id.MHC_imgHoatDong);
 
     }
 

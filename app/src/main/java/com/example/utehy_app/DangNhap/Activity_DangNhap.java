@@ -27,10 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Activity_DangNhap extends AppCompatActivity {
     DatabaseReference mData;
-EditText edtDNUser,edtPass;
-Button btnDN;
-CheckBox cbLuuMK;
-SharedPreferences sharedPreferences;
+    EditText edtDNUser,edtPass;
+    Button btnDN;
+    CheckBox cbLuuMK;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

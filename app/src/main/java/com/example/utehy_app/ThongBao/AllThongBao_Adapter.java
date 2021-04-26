@@ -50,11 +50,14 @@ public class AllThongBao_Adapter extends BaseAdapter {
 
         TextView tvNguoiDang = row.findViewById(R.id.customTB_tvTenNguoiDang);
         TextView tvNgay = row.findViewById(R.id.customTB_tvNgayDang);
+
+
         TextView tvND = row.findViewById(R.id.customTB_tvNoiDungTB);
 
         ImageView img = row.findViewById(R.id.customTB_imgAnh);
 
         ThongBao tb = list.get(position);
+
         tvNguoiDang.setText(tb.getTenSV());
         tvNgay.setText(tb.getNgayGui());
         tvND.setText(tb.getNoiDung());
