@@ -24,6 +24,7 @@
         <activity android:name=".BangTin.BangTinActivity" />
         <activity android:name=".ManHinhChinh.ManHinhChinhActivity" />
         <activity android:name=".DangNhap.Activity_DangNhap" />
+        <activity android:name=".LichHoc.LichHocActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -22,6 +22,7 @@ import com.example.utehy_app.DangNhap.Activity_DangNhap;
 import com.example.utehy_app.DiemDanh.DiemDanhActivity;
 import com.example.utehy_app.Eclass.Eclass_Activity;
 import com.example.utehy_app.HoatDong.HoatDong_Activity;
+import com.example.utehy_app.LichHoc.LichHocActivity;
 import com.example.utehy_app.Model.CTDiemDanh;
 import com.example.utehy_app.Model.DiemDanh;
 import com.example.utehy_app.Model.MonHoc;
@@ -49,7 +50,7 @@ import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     DatabaseReference mData;
-    ImageView imgBangTin,imgDiemDanh,imgThongBao,imgQuanTri,imgHoatDong,imgCongTT,imgEclass;
+    ImageView imgBangTin,imgDiemDanh,imgThongBao,imgQuanTri,imgHoatDong,imgCongTT,imgEclass,imgLichHoc;
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
     TextView tvHoTen,tvQuanTri;
@@ -131,6 +132,13 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                 startActivity(new Intent(ManHinhChinhActivity.this, Eclass_Activity.class));
             }
         });
+        imgLichHoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(ManHinhChinhActivity.this, LichHocActivity.class);
+                startActivity(it);
+            }
+        });
 
 
     }
@@ -169,6 +177,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         imgCongTT=findViewById(R.id.MHC_imgCongTT);
         imgEclass=findViewById(R.id.MHC_imgEclass);
         imgThongBao=findViewById(R.id.MHC_imgThongBao);
+        imgLichHoc=findViewById(R.id.MHC_imgLichHoc);
         tvHoTen=findViewById(R.id.MHC_tvHoTen);
         lvMHV = findViewById(R.id.MHC_lvMonHocVang);
         listMHV = new ArrayList<>();

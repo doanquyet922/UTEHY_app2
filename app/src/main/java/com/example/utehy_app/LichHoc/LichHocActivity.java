@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.utehy_app.R;
 
@@ -75,6 +76,7 @@ CustomCalendar customCalendar;
                 String date=selectedDate.get(Calendar.DAY_OF_MONTH)
                         +"/"+(selectedDate.get(Calendar.MONTH)+1)
                         +"/"+(selectedDate.get(Calendar.YEAR));
+                Toast.makeText(LichHocActivity.this, ""+date, Toast.LENGTH_SHORT).show();
             }
         });
 
