@@ -319,6 +319,7 @@ public class Activity_GuiThongBao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Activity_GuiThongBao.this,QuanTri_Activity.class));
+                finish();
             }
         });
 

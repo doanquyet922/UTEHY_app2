@@ -57,6 +57,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     TextView tvLichHoc;
     ListView lvTinTuc;
 
+    public static String l_tk ="";
+
     public static SinhVien sv_hientai;
     ListView lvMHV;
 
@@ -145,7 +147,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     private void getUser(){
         Intent it=getIntent();
         taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
-        if(!taiKhoan.getLoaiTK().equals("qtv")){
+        l_tk = taiKhoan.getLoaiTK();
+        if(!l_tk.equals("qtv")){
             imgQuanTri.setVisibility(View.GONE);
             tvQuanTri.setVisibility(View.GONE);
         }else{
