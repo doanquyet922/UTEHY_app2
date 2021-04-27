@@ -1,24 +1,33 @@
 package com.example.utehy_app.LichHoc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.example.utehy_app.R;
 
 import org.naishadhparmar.zcustomcalendar.CustomCalendar;
 import org.naishadhparmar.zcustomcalendar.OnDateSelectedListener;
+import org.naishadhparmar.zcustomcalendar.OnNavigationButtonClickedListener;
 import org.naishadhparmar.zcustomcalendar.Property;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
-public class LichHocActivity extends AppCompatActivity {
+public class LichHocActivity extends AppCompatActivity   {
 Toolbar toolbar;
-CustomCalendar customCalendar;
+CalendarView calendarView;
+    String selectedDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +46,7 @@ CustomCalendar customCalendar;
                 finish();
             }
         });
-        customCalendar=findViewById(R.id.LichHoc_callendar);
+        calendarView=findViewById(R.id.LichHoc_callendar);
         HashMap<Object, Property> descHashMap=new HashMap<>();
         Property defaultProperty=new Property();
         defaultProperty.layoutResource=R.layout.default_view;
@@ -55,30 +64,43 @@ CustomCalendar customCalendar;
         Property absentProperty=new Property();
         presentProperty.layoutResource=R.layout.absent_view;
         presentProperty.dateTextViewResource=R.id.absent_view_tv;
-        descHashMap.put("absent",presentProperty);
+        descHashMap.put("absent",absentProperty);
 
-        customCalendar.setMapDescToProp(descHashMap);
+//        customCalendar.setMapDescToProp(descHashMap);
+//
+//        HashMap<Integer, Object> dateHash=new HashMap<>();
+//        Calendar calendar=Calendar.getInstance();
+////        dateHash.put(calendar.get(Calendar.DAY_OF_MONTH),"current");
+////        dateHash.put(1,"present");
+////        dateHash.put(2,"absent");
+////        dateHash.put(3,"present");
+////        dateHash.put(4,"absent");
+////        dateHash.put(20,"present");
+////        dateHash.put(30,"absent");
+//        customCalendar.setDate(calendar,dateHash);
+//
+//
+//
+//        customCalendar.setOnDateSelectedListener(new OnDateSelectedListener() {
+//            @Override
+//            public void onDateSelected(View view, Calendar selectedDate, Object desc) {
+//                String date=selectedDate.get(Calendar.DAY_OF_MONTH)
+//                        +"/"+(selectedDate.get(Calendar.MONTH)+1)
+//                        +"/"+(selectedDate.get(Calendar.YEAR));
+//                Toast.makeText(LichHocActivity.this, "date"+date, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        Date date=new Date();
 
-        HashMap<Integer, Object> dateHash=new HashMap<>();
-        Calendar calendar=Calendar.getInstance();
-        dateHash.put(calendar.get(Calendar.DAY_OF_MONTH),"current");
-        dateHash.put(1,"present");
-        dateHash.put(2,"absent");
-        dateHash.put(3,"present");
-        dateHash.put(4,"absent");
-        dateHash.put(20,"present");
-        dateHash.put(30,"absent");
 
-        customCalendar.setDate(calendar,dateHash);
-        customCalendar.setOnDateSelectedListener(new OnDateSelectedListener() {
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onDateSelected(View view, Calendar selectedDate, Object desc) {
-                String date=selectedDate.get(Calendar.DAY_OF_MONTH)
-                        +"/"+(selectedDate.get(Calendar.MONTH)+1)
-                        +"/"+(selectedDate.get(Calendar.YEAR));
-                Toast.makeText(LichHocActivity.this, ""+date, Toast.LENGTH_SHORT).show();
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                selectedDate=Integer.toString(year)+Integer.toString(month)+Integer.toString(dayOfMonth);
+                Log.d("date", "onSelectedDayChange: "+selectedDate);
             }
         });
+
 
     }
 }

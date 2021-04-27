@@ -9,10 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/LichHoc_toolbar"/>
-<org.naishadhparmar.zcustomcalendar.CustomCalendar
+<CalendarView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/LichHoc_toolbar"
-    android:id="@+id/LichHoc_callendar"/>
-
+    android:id="@+id/LichHoc_callendar"
+    />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Events"
+    android:id="@+id/tvEvenDay"
+    android:textSize="20sp"
+    android:layout_below="@id/LichHoc_callendar"
+    android:layout_margin="5dp"
+    />
 </RelativeLayout>
