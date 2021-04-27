@@ -67,6 +67,11 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         setContentView(R.layout.activity_man_hinh_chinh);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mData= FirebaseDatabase.getInstance().getReference();
+
+        Intent it=getIntent();
+        taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
+        l_tk = taiKhoan.getLoaiTK();
+
         Init();
         Events();
         getDataCTDiemDanh();
@@ -136,9 +141,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 
     }
     private void getUser(){
-        Intent it=getIntent();
-        taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
-        l_tk = taiKhoan.getLoaiTK();
+
         if(!l_tk.equals("qtv")){
             imgQuanTri.setVisibility(View.GONE);
             tvQuanTri.setVisibility(View.GONE);

@@ -59,7 +59,7 @@ public class QuanTri_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(QuanTri_Activity.this, ManHinhChinhActivity.class));
+//                startActivity(new Intent(QuanTri_Activity.this, ManHinhChinhActivity.class));
 
             }
         });

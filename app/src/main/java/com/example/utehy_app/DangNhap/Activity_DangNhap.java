@@ -31,6 +31,8 @@ public class Activity_DangNhap extends AppCompatActivity {
     Button btnDN;
     CheckBox cbLuuMK;
     SharedPreferences sharedPreferences;
+
+    public static TaiKhoan tk_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
