@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaoDiemDanh.Activity_TaoDiemDanh">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaoDiemDanh_toolbar"
+        android:background="#7880AE"
+        app:titleTextColor="#fff"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/TaoDiemDanh_tvTenMon"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:layout_marginLeft="5dp"
+            android:maxLines="1"
+            android:text="Môn học : "
+            android:textSize="25sp"></TextView>
+        <ImageView
+            android:id="@+id/TaoDiemDanh_imgChonMon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_chonmonhoc"></ImageView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TaoDiemDanh_tvMaLop"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:layout_marginLeft="5dp"
+        android:maxLines="1"
+        android:text="Lớp : 101185"
+        android:textSize="25sp"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="#000"
+            android:layout_marginLeft="5dp"
+            android:maxLines="1"
+            android:text="Ngày : "
+            android:textSize="25sp"></TextView>
+        <TextView
+            android:id="@+id/TaoDiemDanh_tvNgayDiemDanh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="#000"
+            android:layout_marginLeft="5dp"
+            android:maxLines="1"
+            android:text="27/04/2021"
+            android:textSize="25sp"></TextView>
+        <ImageView
+
+            android:id="@+id/TaoDiemDanh_imgChonNgay"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_datepicker"></ImageView>
+
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/TaoDiemDanh_edtGVDay"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:hint="Giáo viên dạy"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        ></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DANH SÁCH LỚP"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:textColor="#D61515"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"></TextView>
+
+    <ListView
+        android:id="@+id/TaoDiemDanh_lv"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+
+
+</LinearLayout>
