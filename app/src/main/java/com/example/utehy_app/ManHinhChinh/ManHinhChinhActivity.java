@@ -6,8 +6,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,11 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.utehy_app.BangTin.BangTinActivity;
 import com.example.utehy_app.CongThongTin.CongThongTin_Activity;
 import com.example.utehy_app.CustomAdapter.MonHocVang_Adapter;
-import com.example.utehy_app.DangNhap.Activity_DangNhap;
 import com.example.utehy_app.DiemDanh.DiemDanhActivity;
 import com.example.utehy_app.Eclass.Eclass_Activity;
 import com.example.utehy_app.HoatDong.HoatDong_Activity;
-import com.example.utehy_app.LichHoc.LichHocActivity;
+import com.example.utehy_app.SuKien.LichHocActivity;
 import com.example.utehy_app.Model.CTDiemDanh;
 import com.example.utehy_app.Model.DiemDanh;
 import com.example.utehy_app.Model.MonHoc;
@@ -39,13 +36,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
@@ -290,8 +281,6 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     }
 
     private void getDataMonHocVang() {
-
-
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override

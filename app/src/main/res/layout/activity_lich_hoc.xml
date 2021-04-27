@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LichHoc.LichHocActivity">
+    tools:context=".SuKien.LichHocActivity">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/LichHoc_toolbar"/>
-<CalendarView
+<com.applandeo.materialcalendarview.CalendarView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/LichHoc_toolbar"
