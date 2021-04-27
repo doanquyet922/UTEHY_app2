@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.applandeo.materialcalendarview.CalendarWeekDay;
 import com.applandeo.materialcalendarview.EventDay;
@@ -18,6 +19,7 @@ import com.example.utehy_app.Model.SinhVien;
 import com.example.utehy_app.Model.SuKien;
 import com.example.utehy_app.Model.ThuTrongTuan;
 import com.example.utehy_app.R;
+import com.example.utehy_app.calendar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +38,7 @@ import java.util.List;
 public class LichHocActivity extends AppCompatActivity   {
     DatabaseReference mData;
 Toolbar toolbar;
+TextView tvEvenDay;
 com.applandeo.materialcalendarview.CalendarView calendarView;
 ArrayList<SuKien> arrSK=new ArrayList<>();
     String selectedDate;
@@ -50,10 +53,11 @@ ArrayList<SuKien> arrSK=new ArrayList<>();
     }
 
     private void init() {
+        tvEvenDay=findViewById(R.id.tvEvenDay);
         toolbar=findViewById(R.id.LichHoc_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Lịch học");
+        getSupportActionBar().setTitle("Sự kiện");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,20 +83,9 @@ ArrayList<SuKien> arrSK=new ArrayList<>();
 
 
         calendarView.setFirstDayOfWeek(CalendarWeekDay.SUNDAY);
-//        calendarView.setCalendarDayLayout(R.layout.custom_calendar_day_row);
+        calendarView.setCalendarDayLayout(R.layout.custom_calendar_day_row);
 
-        calendarView.setOnDayClickListener(new OnDayClickListener() {
-            @Override
-            public void onDayClick(@NotNull EventDay eventDay) {
-                Calendar calendar=eventDay.getCalendar();
-                Date date=calendar.getTime();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                String ngay=simpleDateFormat.format(calendar.getTime());
-                Log.d("BBB","date:"+ngay);
-                Log.d("BBB","date:"+calendar.getTime());
 
-            }
-        });
 
 
 
@@ -112,19 +105,78 @@ ArrayList<SuKien> arrSK=new ArrayList<>();
                     try {
                         Date dateSK=simpleDateFormat.parse(sk.getNgay());
                         Date today = new Date();
-                        int t= daysBetween(today,dateSK);
-                        Log.d("BBB", "time: "+t);
+
+                        String da=simpleDateFormat.format(dateSK);
+                        String to=simpleDateFormat.format(today);
+
+                        if(da.equals(to)){
+                            Calendar calendar1 = Calendar.getInstance();
+                            calendar1.add(Calendar.DAY_OF_WEEK, 0);
+                            events.add(new EventDay(calendar1, DrawableUtils.getThreeDots(LichHocActivity.this)));
+                        }
+                        else {
+
+                            int t= daysBetween(today,dateSK);
+                            if(t<0) {
+                                Calendar calendar2 = Calendar.getInstance();
+                                calendar2.add(Calendar.DAY_OF_WEEK, t);
+                                events.add(new EventDay(calendar2, DrawableUtils.getThreeDots(LichHocActivity.this)));
+                            }else {
+                                Calendar calendar3 = Calendar.getInstance();
+                                calendar3.add(Calendar.DAY_OF_WEEK, t+1);
+                                events.add(new EventDay(calendar3, DrawableUtils.getThreeDots(LichHocActivity.this)));
+                            }
+//                            Log.d("BBB", "time: "+t);
+                        }
+
+
+
+
 
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
 
-                    Calendar calendar3 = Calendar.getInstance();
-                    calendar3.add(Calendar.DAY_OF_WEEK, 1);
-                    events.add(new EventDay(calendar3, DrawableUtils.getThreeDots(LichHocActivity.this)));
+
                     calendarView.setEvents(events);
                 }
+                calendarView.setOnDayClickListener(new OnDayClickListener() {
+                    @Override
+                    public void onDayClick(@NotNull EventDay eventDay) {
 
+                        Calendar calendar=eventDay.getCalendar();
+                        Date date=calendar.getTime();
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        String ngayClick=simpleDateFormat.format(calendar.getTime());
+//                        Log.d("BBB","date:"+ngayClick);
+//                        Log.d("BBB","date:"+calendar.getTime());
+                        mData.child("HoatDong").orderByChild("ngay").equalTo(ngayClick).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Log.d("BBB", "data: "+snapshot.getValue());
+                                if (snapshot.getValue()!=null) {
+                                    tvEvenDay.setText("Events:");
+                                    for (DataSnapshot sn : snapshot.getChildren()) {
+                                        SuKien sk = sn.getValue(SuKien.class);
+                                        tvEvenDay.append("\n"+sk.getNoiDung());
+//                                        Log.d("BBB", "HoatDong: " + sk.toString());
+
+                                    }
+                                }else {
+                                    tvEvenDay.setText("Không có sự kiện nào");
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Log.d("BBB", "onCancelled: "+error.getMessage());
+                            }
+                        });
+
+
+                    }
+                });
             }
 
             @Override
@@ -134,6 +186,7 @@ ArrayList<SuKien> arrSK=new ArrayList<>();
         });
     }
     public int daysBetween(Date d1, Date d2){
-        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+
+        return (int)((d2.getTime() - d1.getTime()) / (1000.0 * 60.0 * 60.0 * 24.0));
     }
 }
