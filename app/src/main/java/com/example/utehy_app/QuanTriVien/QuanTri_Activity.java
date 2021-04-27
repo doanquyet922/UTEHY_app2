@@ -51,7 +51,8 @@ public class QuanTri_Activity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(QuanTri_Activity.this, ManHinhChinhActivity.class));
+
+                finish();
             }
         });
 
