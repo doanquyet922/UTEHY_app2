@@ -205,7 +205,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(sinhVien.getMaLop()!=null){
+                if(sinhVien!=null && sinhVien.getMaLop()!=null){
                     String url_base = "https://utehyapp-default-rtdb.firebaseio.com/LichHoc/";
                     String maLichHocLop = "LH"+sinhVien.getMaLop();
                     String path = url_base+maLichHocLop+"/TKB";
