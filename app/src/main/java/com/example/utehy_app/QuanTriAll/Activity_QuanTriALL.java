@@ -12,7 +12,7 @@ import com.example.utehy_app.DangNhap.Activity_DangNhap;
 import com.example.utehy_app.R;
 
 public class Activity_QuanTriALL extends AppCompatActivity {
-    ImageView imgTaiKhoan,imgThoat;
+    ImageView imgTaiKhoan,imgThoat,imgThongBao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +37,18 @@ public class Activity_QuanTriALL extends AppCompatActivity {
                 startActivity(new Intent(Activity_QuanTriALL.this, Activity_DangNhap.class));
             }
         });
+        imgThongBao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Activity_QuanTriALL.this, QuanTriAll_GuiThongBao.class));
+            }
+        });
     }
 
     private void Init() {
         imgTaiKhoan = findViewById(R.id.QTA_imgTaiKhoan);
         imgThoat = findViewById(R.id.QTA_imgThoat);
+        imgThongBao = findViewById(R.id.QTA_imgThongBao);
     }
 }

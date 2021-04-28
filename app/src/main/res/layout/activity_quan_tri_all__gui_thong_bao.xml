@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuiThongBao.Activity_GuiThongBao">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/QuanTriAll_GuiTB_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F51B5"
+        app:titleTextColor="#fff" />
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/logo"></ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/GuiTB_tvTenNguoiGui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:text="Quản trị viên" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="17sp"
+                    android:text="tới" />
+                <TextView
+                    android:id="@+id/QuanTriAll_GuiTB_tvMaLop"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#C82727"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="17sp"
+                    android:text="101185" />
+                <Spinner
+                    android:id="@+id/QuanTriAll_GuiTB_spnChonLop"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"></Spinner>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/QuanTriAll_GuiTB_imgChonAnh"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_themanh2"></ImageView>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/QuanTriAll_GuiTB_edtND"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập nội dung thông báo"
+        android:lineSpacingExtra="10dp"/>
+
+    <ImageView
+        android:id="@+id/QuanTriAll_GuiTB_imgAnh"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_cancel_anh"
+        android:visibility="gone"
+        android:id="@+id/GuiTB_imgHuyAnh"></ImageView>
+
+    <Button
+        android:id="@+id/QuanTriAll_GuiTB_btnGui"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:text="Gửi thông báo"
+        android:background="#0818A8"
+        android:textColor="#FFF"></Button>
+
+</LinearLayout>
