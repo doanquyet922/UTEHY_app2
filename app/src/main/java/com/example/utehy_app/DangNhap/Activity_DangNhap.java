@@ -63,6 +63,7 @@ public class Activity_DangNhap extends AppCompatActivity {
         if (!ret==true){
         Dialog dialog=new Dialog(Activity_DangNhap.this);
         dialog.setContentView(R.layout.custom_dialog_check_dangnhap);
+        dialog.setCancelable(false);
         Button btnThuLai=dialog.findViewById(R.id.da_ThuLai);
 
             btnThuLai.setOnClickListener(new View.OnClickListener() {
