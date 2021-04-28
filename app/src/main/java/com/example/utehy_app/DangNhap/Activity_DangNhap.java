@@ -1,5 +1,7 @@
 package com.example.utehy_app.DangNhap;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,11 +11,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.utehy_app.ConnectionReceiver;
 import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.Model.TaiKhoan;
 import com.example.utehy_app.QuanTriAll.Activity_QuanTriALL;
@@ -41,6 +45,7 @@ public class Activity_DangNhap extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mData= FirebaseDatabase.getInstance().getReference();
 
+        DiaLogCheckInternet();
         init();
         sharedPreferences=getSharedPreferences("dataLogin",MODE_PRIVATE);//Khởi tạo 1 file
         // lấy giá trị sharedPreferences
@@ -51,6 +56,28 @@ public class Activity_DangNhap extends AppCompatActivity {
 //            CheckDangNhap();
 //        }
         events();
+    }
+
+    private void DiaLogCheckInternet() {
+        boolean ret = ConnectionReceiver.isConnected();
+        if (!ret==true){
+        Dialog dialog=new Dialog(Activity_DangNhap.this);
+        dialog.setContentView(R.layout.custom_dialog_check_dangnhap);
+        Button btnThuLai=dialog.findViewById(R.id.da_ThuLai);
+
+            btnThuLai.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    DiaLogCheckInternet();
+                }
+            });
+            dialog.show();
+
+        }
+
+
+
     }
 
     private void events() {
