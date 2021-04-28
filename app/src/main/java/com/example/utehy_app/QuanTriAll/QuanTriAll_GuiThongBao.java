@@ -160,7 +160,7 @@ public class QuanTriAll_GuiThongBao extends AppCompatActivity {
                     edtND.requestFocus();
                     return;
                 }
-
+                TempDialog.show();
                 String diaChiGui = spnMaLop.getSelectedItem().toString();
 
                 AlertDialog.Builder al = new AlertDialog.Builder(QuanTriAll_GuiThongBao.this);
