@@ -1,5 +1,10 @@
 package com.example.utehy_app.Model;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class SinhVien {
     String maSV,hoTen,gioiTinh,namSinh,diaChi,maLop;
 
@@ -73,5 +78,16 @@ public class SinhVien {
                 ", diaChi='" + diaChi + '\'' +
                 ", maLop='" + maLop + '\'' +
                 '}';
+    }
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("maSV", maSV);
+        result.put("hoTen", hoTen);
+        result.put("gioiTinh", gioiTinh);
+        result.put("namSinh", namSinh);
+        result.put("diaChi", diaChi);
+        result.put("maLop", maLop);
+        return result;
     }
 }

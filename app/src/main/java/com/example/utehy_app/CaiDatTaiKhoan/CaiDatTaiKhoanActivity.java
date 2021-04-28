@@ -49,6 +49,14 @@ Toolbar toolbar;
         });
         btnThongTin=findViewById(R.id.CDTaiKHoan_ThongTin);
         btnDangXuat=findViewById(R.id.CDTaiKHoan_DangXuat);
+
+        btnThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(CaiDatTaiKhoanActivity.this,ThongTaiKhoanActivity.class);
+                startActivity(it);
+            }
+        });
     }
     private void DialogDangXuat(){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);

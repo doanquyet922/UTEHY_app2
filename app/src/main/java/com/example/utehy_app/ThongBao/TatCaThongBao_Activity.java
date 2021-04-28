@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 
 import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
+import com.example.utehy_app.Model.SinhVien;
 import com.example.utehy_app.Model.ThongBao;
 import com.example.utehy_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,7 +41,6 @@ public class TatCaThongBao_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tat_ca_thong_bao);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         mData= FirebaseDatabase.getInstance().getReference();
 
 
@@ -85,21 +85,23 @@ public class TatCaThongBao_Activity extends AppCompatActivity {
     }
 
     private void getDataThongBao(){
-        mData.child("THongBao").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        SinhVien sv=ManHinhChinhActivity.sv_hientai;
+        String maLop=sv.getMaLop();
+        mData.child("THongBao").orderByChild("maLop").equalTo(maLop).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                DataSnapshot snapshot = task.getResult();
-                if(task.isSuccessful()){
-                    for(DataSnapshot ds : snapshot.getChildren()) {
-                        ThongBao tb = new ThongBao();
-                        tb = ds.getValue(ThongBao.class);
-                        listTB.add(tb);
-                    }
-                    allThongBao_adapter.notifyDataSetChanged();
-                    TempDialog.dismiss();
-                }else{
-                    Log.d("Check status get TB","failed");
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    ThongBao tb = new ThongBao();
+                    tb = ds.getValue(ThongBao.class);
+                    listTB.add(tb);
                 }
+                allThongBao_adapter.notifyDataSetChanged();
+                TempDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
