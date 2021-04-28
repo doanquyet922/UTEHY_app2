@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuanTriAll.QuanLyTaiKhoan_Activity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/QLTK_toolbar"
+        android:background="#7880AE"
+        app:titleTextColor="#fff"
+        />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/QLTK_edtTimKiem"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:hint="Tìm kiếm"></EditText>
+        <Spinner
+            android:id="@+id/QLTK_spinLoaiTK"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"></Spinner>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/QLTK_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        ></ListView>
+</LinearLayout>
