@@ -50,6 +50,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     ListView lvTinTuc;
 
     public static String l_tk ="";
+    public static String mk="";
 
     public static SinhVien sv_hientai;
     ListView lvMHV;
@@ -72,6 +73,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         Intent it=getIntent();
         taiKhoan= (TaiKhoan) it.getSerializableExtra("TaiKhoan");
         l_tk = taiKhoan.getLoaiTK();
+        mk=taiKhoan.getMatKhau();
 
         Init();
         Events();
