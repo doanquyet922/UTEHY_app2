@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
     DatabaseReference mData;
 
     //list Sinh viên
-    ArrayList<SinhVien> listSV_get;
+    public static ArrayList<SinhVien> listSV_get;
     //list tài khoản
     ArrayList<TaiKhoan> listTK_get;
     //list đối tượng lv
@@ -282,7 +283,9 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //..
         switch (item.getItemId()){
-
+            case R.id.menuQLTK_itThem:
+                startActivity(new Intent(QuanLyTaiKhoan_Activity.this,Activity_QLTK_ThemTK.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

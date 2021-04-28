@@ -35,7 +35,7 @@
                 ></TextView>
             <TextView
                 android:id="@+id/MHC_tvHoTen"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Hoàng Việt"
                 android:textColor="#FFF"
@@ -51,7 +51,7 @@
             android:layout_height="40dp"
             android:src="@drawable/ic_setting2"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="90dp"
             ></ImageView>
     </LinearLayout>
 
