@@ -3,7 +3,7 @@
     package="com.example.utehy_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".WifiApp"
@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTEHY_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QuanTriAll.QuanTriAll_GuiThongBao"></activity>
+        <activity android:name=".QuanTriAll.Activity_CapQuyenNguoiDung"></activity>
+        <activity android:name=".QuanTriAll.QuanLyMonHoc_Activity" />
+        <activity android:name=".QuanTriAll.QuanTriAll_GuiThongBao" />
         <activity android:name=".QuanTriAll.Activity_QLTK_ThemTK" />
         <activity android:name=".QuanTriAll.QuanLyTaiKhoan_Activity" />
         <activity android:name=".QuanTriAll.Activity_QuanTriALL" />
@@ -44,6 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver
             android:name=".ConnectionReceiver"
             android:enabled="true">

@@ -74,6 +74,7 @@ public class Activity_QLTK_ThemTK extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Init();
+
         Events();
     }
 
@@ -289,4 +290,6 @@ public class Activity_QLTK_ThemTK extends AppCompatActivity {
             }
         });
     }
+
+
 }

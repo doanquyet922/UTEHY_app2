@@ -346,7 +346,7 @@ public class QuanTriAll_GuiThongBao extends AppCompatActivity {
     //hàm lấy về danh sách lớp
     private void GetDSMaLop(){
         listMaLop.clear();
-        listMaLop.add("Tất cả");
+        
         mData.child("Lop").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {

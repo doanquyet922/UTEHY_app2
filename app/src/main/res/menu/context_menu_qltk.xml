@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Cấp quyền"
+        android:id="@+id/context_menu_itCapQuyen"
+        ></item>
+    <item
+        android:title="Xóa"
+        android:id="@+id/context_menu_itXoaSV"
+        ></item>
+</menu>

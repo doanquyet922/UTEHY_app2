@@ -14,7 +14,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -45,7 +47,8 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
     Spinner spnLoaiTK;
     ListView lv;
 
-
+    public static Obj_TaiKhoanQuanLy obj_selected;
+    int index_selected = -1;
     //Temp dialog
     ProgressDialog TempDialog;
     int i = 0;
@@ -73,7 +76,7 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Init();
-
+        this.registerForContextMenu(lv);
     }
 
     private void Events() {
@@ -123,6 +126,13 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
 //            }
 //        });
 
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                index_selected = position;
+                return false;
+            }
+        });
         edtTim.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -290,4 +300,65 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, view, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu_qltk, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.context_menu_itCapQuyen:
+                obj_selected = listTKQL_get.get(index_selected);
+                startActivity(new Intent(QuanLyTaiKhoan_Activity.this,Activity_CapQuyenNguoiDung.class));
+                break;
+            case R.id.context_menu_itXoaSV:
+                AlertDialog.Builder al = new AlertDialog.Builder(QuanLyTaiKhoan_Activity.this);
+                al.setMessage("Xóa sinh viên này ?");
+                al.setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String maSV = listTKQL_get.get(index_selected).getMaSV();
+                        mData.child("TaiKhoan").child(maSV).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    listTKQL_get.remove(index_selected);
+                                    adapter_quanLyTaiKhoan.notifyDataSetChanged();
+                                    Toast.makeText(QuanLyTaiKhoan_Activity.this,"Xóa thành công tài khoản",Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(QuanLyTaiKhoan_Activity.this,"Xóa thất bại tài khoản",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        mData.child("SinhVien").child(maSV).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(QuanLyTaiKhoan_Activity.this,"Xóa thành công sinh viên",Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(QuanLyTaiKhoan_Activity.this,"Xóa thất bại sv",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                al.setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                al.create();
+                al.show();
+
+                break;
+
+        }
+        return true;
+    }
 }
