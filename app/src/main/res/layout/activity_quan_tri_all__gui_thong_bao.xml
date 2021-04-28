@@ -61,7 +61,7 @@
                     android:layout_marginTop="13dp"
                     android:layout_marginLeft="10dp"
                     android:textSize="17sp"
-                    android:text="101185" />
+                    android:text="Tất cả" />
                 <Spinner
                     android:id="@+id/QuanTriAll_GuiTB_spnChonLop"
                     android:layout_width="50dp"
@@ -93,6 +93,14 @@
         android:layout_gravity="center"
         android:visibility="gone"
         />
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_cancel_anh"
+        android:visibility="gone"
+        android:id="@+id/QuanTriAll_GuiTB_imgHuyAnh"></ImageView>
 
     <ImageView
         android:layout_marginTop="10dp"

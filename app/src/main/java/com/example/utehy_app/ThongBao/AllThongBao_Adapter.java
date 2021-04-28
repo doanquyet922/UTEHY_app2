@@ -55,9 +55,13 @@ public class AllThongBao_Adapter extends BaseAdapter {
         TextView tvND = row.findViewById(R.id.customTB_tvNoiDungTB);
 
         ImageView img = row.findViewById(R.id.customTB_imgAnh);
+        ImageView imgAvt = row.findViewById(R.id.customTB_imgAvt);
 
         ThongBao tb = list.get(position);
 
+        if(tb.getMaSV().equals("admin")){
+            imgAvt.setImageResource(R.drawable.logo);
+        }
         tvNguoiDang.setText(tb.getTenSV());
         tvNgay.setText(tb.getNgayGui());
         tvND.setText(tb.getNoiDung());
