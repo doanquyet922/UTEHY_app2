@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.utehy_app.BangTin.BangTinActivity;
+import com.example.utehy_app.CaiDatTaiKhoan.CaiDatTaiKhoanActivity;
 import com.example.utehy_app.CongThongTin.CongThongTin_Activity;
 import com.example.utehy_app.CustomAdapter.MonHocVang_Adapter;
 import com.example.utehy_app.DiemDanh.DiemDanhActivity;
@@ -41,7 +42,7 @@ import java.util.Date;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     DatabaseReference mData;
-    ImageView imgBangTin,imgDiemDanh,imgThongBao,imgQuanTri,imgHoatDong,imgCongTT,imgEclass,imgLichHoc;
+    ImageView imgBangTin,imgDiemDanh,imgThongBao,imgQuanTri,imgHoatDong,imgCongTT,imgEclass,imgLichHoc,imgCaiDat;
     TaiKhoan taiKhoan;
     SinhVien sinhVien;
     TextView tvHoTen,tvQuanTri;
@@ -137,7 +138,13 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
-
+        imgCaiDat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(ManHinhChinhActivity.this, CaiDatTaiKhoanActivity.class);
+                startActivity(it);
+            }
+        });
 
     }
     private void getUser(){
@@ -170,6 +177,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 }
     private void Init() {
         imgBangTin = findViewById(R.id.MHC_imgBangTin);
+        imgCaiDat=findViewById(R.id.MHC_imgCaiDat);
         imgDiemDanh=findViewById(R.id.MHC_imgDiemDanh);
         imgCongTT=findViewById(R.id.MHC_imgCongTT);
         imgEclass=findViewById(R.id.MHC_imgEclass);
@@ -284,6 +292,9 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     }
 
     private void getDataMonHocVang() {
+        arrCT_Of_MaSV.clear();
+        arrALL_DD.clear();
+        arrALL_MH.clear();
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
