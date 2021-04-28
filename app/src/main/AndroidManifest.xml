@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTEHY_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CaiDatTaiKhoan.ThongTaiKhoanActivity"></activity>
+        <activity android:name=".QuanTriAll.Activity_QLTK_ThemTK"></activity>
+        <activity android:name=".QuanTriAll.QuanLyTaiKhoan_Activity" />
+        <activity android:name=".QuanTriAll.Activity_QuanTriALL" />
+        <activity android:name=".CaiDatTaiKhoan.ThongTaiKhoanActivity" />
         <activity android:name=".CaiDatTaiKhoan.CaiDatTaiKhoanActivity" />
         <activity android:name=".GuiLichHoatDong.Activity_GuiLichHoatDong" />
         <activity android:name=".ThemMonHoc.Activity_ThemMonHoc" />

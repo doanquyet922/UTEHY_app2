@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.Model.TaiKhoan;
+import com.example.utehy_app.QuanTriAll.Activity_QuanTriALL;
 import com.example.utehy_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -96,9 +97,15 @@ public class Activity_DangNhap extends AppCompatActivity {
                                     editor.remove("checked");
                                     editor.commit();
                                 }
-                                Intent it=new Intent(Activity_DangNhap.this, ManHinhChinhActivity.class);
-                                it.putExtra("TaiKhoan",tk);
-                                startActivity(it);
+                                if(tk.getLoaiTK().equals("admin")){
+                                    Intent it=new Intent(Activity_DangNhap.this, Activity_QuanTriALL.class);
+                                    startActivity(it);
+                                }else{
+                                    Intent it=new Intent(Activity_DangNhap.this, ManHinhChinhActivity.class);
+                                    it.putExtra("TaiKhoan",tk);
+                                    startActivity(it);
+                                }
+
                             } else {
                                 Toast.makeText(Activity_DangNhap.this, "Đăng nhập không thành công.", Toast.LENGTH_SHORT).show();
                             }
