@@ -1,5 +1,6 @@
 package com.example.utehy_app.CaiDatTaiKhoan;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +27,8 @@ import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.Model.SinhVien;
 import com.example.utehy_app.R;
 import com.example.utehy_app.calendar;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -139,12 +142,18 @@ public class ThongTaiKhoanActivity extends AppCompatActivity {
         String maLop=sv.getMaLop();
         if(!hoTen.equals("") && !diaChi.equals("")) {
             SinhVien svUpdated = new SinhVien(maSV, hoTen, gioiTinh, namSinh, diaChi, maLop);
-            String key = mData.child("SinhVien").push().getKey();
+            String key = maSV;
             Map<String, Object> postValues = svUpdated.toMap();
             Map<String, Object> childUpdates = new HashMap<>();
             childUpdates.put("/SinhVien/" + key, postValues);
 //            childUpdates.put("/user-posts/" + maSV + "/" + key, postValues);
-            mData.updateChildren(childUpdates);
+            mData.updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(ThongTaiKhoanActivity.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
         }
         else {
             Toast.makeText(this, "Lỗi", Toast.LENGTH_SHORT).show();
