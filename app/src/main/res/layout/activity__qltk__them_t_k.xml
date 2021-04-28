@@ -17,11 +17,10 @@
 
     <EditText
         android:inputType="number"
-        android:id="@+id/ThemTaiKhoan_edtMaSV"
+        android:id="@+id/QLTK_ThemTaiKhoan_edtMaSV"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:hint="Mã sinh viên"
         android:paddingLeft="10dp"
         android:textColorHint="#423838"></EditText>
@@ -40,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chọn giới tính"
+        android:textColor="#A61919"
         android:textSize="20sp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"></TextView>
@@ -53,7 +53,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Chọn lớp"
+        android:textColor="#A61919"
+        android:textSize="20sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"></TextView>
+    <Spinner
+        android:id="@+id/QLTK_ThemTaiKhoan_spnLop"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"></Spinner>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Loại tài khoản"
+        android:textColor="#A61919"
+
         android:textSize="20sp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"></TextView>
@@ -75,6 +91,8 @@
             android:layout_height="wrap_content"
             android:text="Ngày sinh : "
             android:textSize="23sp"
+            android:textColor="#A61919"
+
             android:layout_marginTop="12dp"
             android:layout_marginLeft="6dp"
             ></TextView>
