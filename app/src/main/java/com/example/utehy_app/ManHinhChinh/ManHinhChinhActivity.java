@@ -56,6 +56,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     ListView lvMHV;
 
     ArrayList<TinTucUTEHY> listTinTucUTEHY;
+
     Adapter_GridView_TinTuc adapter_gridView_tinTuc;
 
     ArrayList<MonHocVang> listMHV;

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/dialogSuaLH_tvThu"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="THỨ 2"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"></TextView>
+
+
+    //sáng
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SÁNG"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#E61919"
+        android:layout_marginTop="20dp"></TextView>
+    <EditText
+        android:hint="Nhập tên môn học"
+        android:id="@+id/dialogSuaLH_edtSang"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"></EditText>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/dialogSuaLH_spnTietSang"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            ></Spinner>
+        <EditText
+            android:id="@+id/dialogSuaLH_edtPhongSang"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Nhập phòng"
+            android:layout_marginLeft="10dp"
+            android:textAllCaps="true"
+            ></EditText>
+    </LinearLayout>
+
+    //chiều
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHIỀU"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#3F51B5"
+        android:layout_marginTop="30dp"></TextView>
+    <EditText
+        android:hint="Nhập tên môn học"
+        android:id="@+id/dialogSuaLH_edtChieu"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"></EditText>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/dialogSuaLH_spnTietChieu"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            ></Spinner>
+        <EditText
+            android:id="@+id/dialogSuaLH_edtPhongChieu"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Nhập phòng"
+            android:textAllCaps="true"
+            android:layout_marginLeft="10dp"
+            ></EditText>
+    </LinearLayout>
+    <Button
+        android:id="@+id/dialogSuaLH_btnLuu"
+        android:layout_marginBottom="20dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Lưu"
+        android:textSize="15sp"
+        android:textColor="#fff"
+        android:layout_gravity="center"
+        android:background="@drawable/botron_rowqllh"
+        android:layout_marginTop="50dp"></Button>
+</LinearLayout>

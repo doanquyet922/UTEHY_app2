@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@drawable/botron_rowqllh"
+    android:layout_height="200dp">
+
+    <TextView
+        android:id="@+id/rowQLLH_tvThu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thứ 2"
+        android:textColor="#FFEB3B"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_gravity="center"></TextView>
+    <TextView
+        android:id="@+id/rowQLLH_tvSang"
+        android:layout_width="wrap_content"
+        android:textColor="#fff"
+        android:layout_height="wrap_content"
+        android:text="- SÁNG : Lập trình dịch vụ mạng Android"
+        android:textSize="20sp"
+        android:padding="10dp"></TextView>
+    <TextView
+        android:id="@+id/rowQLLH_tvChieu"
+        android:layout_width="wrap_content"
+        android:textColor="#fff"
+        android:layout_height="wrap_content"
+        android:text="- CHIỀU : Phương pháp tính"
+        android:textSize="20sp"
+        android:padding="10dp"></TextView>
+
+</LinearLayout>

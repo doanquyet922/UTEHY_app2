@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import com.example.utehy_app.GuiLichHoatDong.Activity_GuiLichHoatDong;
 import com.example.utehy_app.GuiThongBao.Activity_GuiThongBao;
 import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
+import com.example.utehy_app.QuanLyLichHoc.QuanLyLichHoc_Activity;
 import com.example.utehy_app.R;
 import com.example.utehy_app.TaoDiemDanh.Activity_TaoDiemDanh;
 import com.example.utehy_app.ThemTaiKhoan.Activity_ThemTaiKhoan;
 
 public class QuanTri_Activity extends AppCompatActivity {
     Toolbar toolbar;
-    ImageView imgGuiThongBao,imgThemTaiKhoan,imgDiemDanh,imgLichHD;
+    ImageView imgGuiThongBao,imgThemTaiKhoan,imgDiemDanh,imgLichHD,imgLichHoc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,13 @@ public class QuanTri_Activity extends AppCompatActivity {
                 startActivity(new Intent(QuanTri_Activity.this, Activity_GuiLichHoatDong.class));
             }
         });
+
+        imgLichHoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QuanTri_Activity.this, QuanLyLichHoc_Activity.class));
+            }
+        });
     }
 
     private void Init() {
@@ -76,5 +84,6 @@ public class QuanTri_Activity extends AppCompatActivity {
         imgThemTaiKhoan = findViewById(R.id.QuanTri_imgTaiKhoan);
         imgDiemDanh = findViewById(R.id.QuanTri_imgDiemDanh);
         imgLichHD = findViewById(R.id.QuanTri_imgLichHD);
+        imgLichHoc = findViewById(R.id.QuanTri_imgLichHoc);
     }
 }
