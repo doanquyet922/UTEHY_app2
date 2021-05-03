@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.utehy_app.GuiThongBao.Activity_GuiThongBao;
 import com.example.utehy_app.ManHinhChinh.ManHinhChinhActivity;
 import com.example.utehy_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +44,9 @@ public class QuanLyLichHoc_Activity extends AppCompatActivity {
 
     ArrayList<ThoiKhoaBieu> listTKB;
     Adapter_QuanLyLichHoc adapter_quanLyLichHoc;
+
+    ProgressDialog TempDialog;
+    int i =0;
 
     int post_click = -1;
 
@@ -65,6 +72,14 @@ public class QuanLyLichHoc_Activity extends AppCompatActivity {
     }
 
     private void Init() {
+
+        TempDialog = new ProgressDialog(QuanLyLichHoc_Activity.this);
+        TempDialog.setTitle("Đang lưu lịch học");
+        TempDialog.setCancelable(false);
+        TempDialog.setProgress(i);
+        TempDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        TempDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+
         toolbar = findViewById(R.id.QuanLyLichHoc_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -215,6 +230,70 @@ public class QuanLyLichHoc_Activity extends AppCompatActivity {
 
 
         dialog.show();
+
+        //sự kiện nút lưu
+        btnLuu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 TempDialog.show();
+                 String thu = tkb.getThu().toString();
+                 String maLop = "LH"+ManHinhChinhActivity.sv_hientai.getMaLop();
+
+
+
+                 //dữ liệu tkb buổi sáng
+                if(edtSang.getText().toString().length()>0 && spnTietSang.getSelectedItemPosition()!=0 && edtPhongSang.getText().toString().length()>0){
+                    String tenMH_sang = edtSang.getText().toString();
+                    String phong_sang = edtPhongSang.getText().toString();
+                    String tiet_sang = spnTietSang.getSelectedItem().toString();
+
+                    String tkb_sang = tenMH_sang+" - "+tiet_sang+" - "+phong_sang;
+
+                    mData.child("LichHoc").child(maLop).child("TKB").child(tkb.getThu()).child("Sang").setValue(tkb_sang).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Log.d("status change TKB","lưu tkb sáng ok");
+                            }else{
+                                Log.d("status change TKB","lưu tkb sáng failed");
+                            }
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(QuanLyLichHoc_Activity.this,"Vui lòng nhập thông tin buổi sáng",Toast.LENGTH_SHORT).show();
+                    TempDialog.dismiss();
+                }
+
+                //dữ liệu tkb buổi chiều
+                if(edtChieu.getText().toString().length()>0 && spntietChieu.getSelectedItemPosition()!=0 && edtPhongChieu.getText().toString().length()>0){
+                    String tenMH_chieu = edtChieu.getText().toString();
+                    String phong_chieu = edtPhongChieu.getText().toString();
+                    String tiet_chieu = spntietChieu.getSelectedItem().toString();
+
+                    String tkb_sang = tenMH_chieu+" - "+tiet_chieu+" - "+phong_chieu;
+
+                    mData.child("LichHoc").child(maLop).child("TKB").child(tkb.getThu()).child("Chieu").setValue(tkb_sang).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Log.d("status change TKB","lưu tkb chiều ok");
+                                TempDialog.dismiss();
+                                dialog.cancel();
+                                getThoiKhoaBieu();
+                                Toast.makeText(QuanLyLichHoc_Activity.this,"Lưu lịch hoc thành công",Toast.LENGTH_SHORT).show();
+                            }else{
+                                Log.d("status change TKB","lưu tkb chiều failed");
+                            }
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(QuanLyLichHoc_Activity.this,"Vui lòng nhập thông tin buổi chiều",Toast.LENGTH_SHORT).show();
+                    TempDialog.dismiss();
+                }
+            }
+        });
 
     }
     private String getThu(String thu){
