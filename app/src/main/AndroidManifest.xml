@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTEHY_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QuanLyLichHoc.QuanLyLichHoc_Activity"></activity>
+        <activity android:name=".TaoMonHoc.Activity_QuanLyMonHoc"></activity>
+        <activity android:name=".TaoMonHoc.Activity_ThemMonHoc" />
+        <activity android:name=".QuanLyLichHoc.QuanLyLichHoc_Activity" />
         <activity android:name=".QuanTriAll.Activity_CapQuyenNguoiDung" />
         <activity android:name=".QuanTriAll.QuanLyMonHoc_Activity" />
         <activity android:name=".QuanTriAll.QuanTriAll_GuiThongBao" />
@@ -24,7 +26,7 @@
         <activity android:name=".CaiDatTaiKhoan.ThongTaiKhoanActivity" />
         <activity android:name=".CaiDatTaiKhoan.CaiDatTaiKhoanActivity" />
         <activity android:name=".GuiLichHoatDong.Activity_GuiLichHoatDong" />
-        <activity android:name=".ThemMonHoc.Activity_ThemMonHoc" />
+        <activity android:name=".ThemMonHoc.Activity_QuanLyMonHoc" />
         <activity android:name=".TaoDiemDanh.Activity_TaoDiemDanh" />
         <activity android:name=".ThemTaiKhoan.Activity_ThemTaiKhoan" />
         <activity android:name=".GuiThongBao.Activity_GuiThongBao" />

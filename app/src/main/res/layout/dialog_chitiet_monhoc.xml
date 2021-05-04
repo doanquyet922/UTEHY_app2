@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="500dp">
+
+    <ImageView
+
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_monhoc"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên môn học"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10sp"></TextView>
+
+    <EditText
+        android:id="@+id/dialogCTMH_edtTenMH"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số tín chỉ"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10sp"></TextView>
+
+    <EditText
+        android:id="@+id/dialogCTMH_edtSoTC"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"></EditText>
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/dialogCTMH_btnHuy"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Hủy"
+            android:layout_gravity="center"
+            android:background="#FF5722"
+            android:textColor="#fff"></Button>
+        <Button
+            android:layout_marginLeft="25dp"
+            android:id="@+id/dialogCTMH_btnLuu"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Lưu"
+            android:layout_gravity="center"
+            android:background="#2196F3"
+            android:textColor="#fff"></Button>
+    </LinearLayout>
+
+</LinearLayout>
