@@ -119,7 +119,7 @@ public class QuanLyLichHoc_Activity extends AppCompatActivity {
             String thu = "T"+i;
             t.setThu(thu);
 
-            mData.child("LichHoc").child(maLH).child("TKB").child(thu).child("Sang").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            mData.child("LichHoc").child(maLH).child("TKB").child(thu).child("sang").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     DataSnapshot ds = task.getResult();
@@ -128,7 +128,7 @@ public class QuanLyLichHoc_Activity extends AppCompatActivity {
 
                     //
 
-                    mData.child("LichHoc").child(maLH).child("TKB").child(thu).child("Chieu").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    mData.child("LichHoc").child(maLH).child("TKB").child(thu).child("chieu").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             DataSnapshot ds = task.getResult();
