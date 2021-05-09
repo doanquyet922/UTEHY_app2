@@ -80,51 +80,7 @@ public class QuanLyTaiKhoan_Activity extends AppCompatActivity {
     }
 
     private void Events() {
-        //            spnLoaiTK.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                switch (position){
-//                    case 0:
-//                        listTKQL_get.clear();
-//                        listTKQL_get = listTKQL_get_backup;
-//                        adapter_quanLyTaiKhoan.notifyDataSetChanged();
-//                        Toast.makeText(QuanLyTaiKhoan_Activity.this,""+listTKQL_get.size(),Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case 1:
-//                        listTKQL_get.clear();
-//                        for (Obj_TaiKhoanQuanLy o : listTKQL_get_backup){
-//                            if(o.getLoaiTK().equals("qtv")){
-//                                listTKQL_get.add(o);
-//                            }
-//                        }
-//                        Toast.makeText(QuanLyTaiKhoan_Activity.this,""+listTKQL_get.size(),Toast.LENGTH_SHORT).show();
-//
-//                        adapter_quanLyTaiKhoan.notifyDataSetChanged();
-//                        break;
-//                    case 2:
-//                        listTKQL_get.clear();
-//                        for (Obj_TaiKhoanQuanLy o : listTKQL_get_backup){
-//                            if(o.getLoaiTK().equals("tv")){
-//                                listTKQL_get.add(o);
-//                            }
-//                        }
-//                        Toast.makeText(QuanLyTaiKhoan_Activity.this,""+listTKQL_get.size(),Toast.LENGTH_SHORT).show();
-//
-//                        adapter_quanLyTaiKhoan.notifyDataSetChanged();
-//                        break;
-//                }
-//            }
-//
-//
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-////                listTKQL_get.clear();
-////                listTKQL_get = listTKQL_get_backup;
-////                adapter_quanLyTaiKhoan.notifyDataSetChanged();
-////                Toast.makeText(QuanLyTaiKhoan_Activity.this,""+listTKQL_get.size(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

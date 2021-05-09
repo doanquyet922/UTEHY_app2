@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ThemLopHoc_toolbar"
+        android:background="#7880AE"
+        app:titleTextColor="#fff"
+        />
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_lophoc"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"></ImageView>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="20sp"
+        android:text="Chọn khoa"
+        android:textColor="#F44336"
+        android:textSize="20sp"></TextView>
+
+    <Spinner
+        android:id="@+id/ThemLopHoc_spnKhoa"
+        android:layout_marginTop="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"></Spinner>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã lớp"
+        android:textSize="20sp"
+        android:textColor="#F44336"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10sp"></TextView>
+
+    <EditText
+        android:id="@+id/ThemLopHoc_edtMaLop"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"></EditText>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên lớp"
+        android:textSize="20sp"
+        android:textColor="#F44336"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10sp"></TextView>
+
+    <EditText
+        android:id="@+id/ThemLopHoc_edtTenLop"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giảng viên chủ nhiệm"
+        android:textSize="20sp"
+        android:textColor="#F44336"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10sp"></TextView>
+
+    <EditText
+        android:id="@+id/ThemLopHoc_TenGVCN"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"></EditText>
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/ThemLopHoc_btnHuy"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Hủy"
+            android:layout_gravity="center"
+            android:background="#FF5722"
+            android:textColor="#fff"></Button>
+        <Button
+            android:layout_marginLeft="25dp"
+            android:id="@+id/ThemLopHoc_btnLuu"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="THÊM"
+            android:layout_gravity="center"
+            android:background="#2196F3"
+            android:textColor="#fff"></Button>
+    </LinearLayout>
+
+</LinearLayout>

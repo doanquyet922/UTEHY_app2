@@ -220,7 +220,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                     String thu_cut = date_string.substring(0,3);
                     String thu = getThuHienTai(thu_cut);
                     DatabaseReference data = FirebaseDatabase.getInstance().getReferenceFromUrl(path);
-                    data.child(thu).child("Sang").addValueEventListener(new ValueEventListener() {
+                    data.child(thu).child("sang").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot!=null) {
@@ -236,7 +236,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                         }
                     });
 
-                    data.child(thu).child("Chieu").addValueEventListener(new ValueEventListener() {
+                    data.child(thu).child("chieu").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot!=null) {

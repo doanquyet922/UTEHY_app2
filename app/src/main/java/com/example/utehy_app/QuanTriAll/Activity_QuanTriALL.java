@@ -9,11 +9,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.example.utehy_app.DangNhap.Activity_DangNhap;
+import com.example.utehy_app.QuanLyLopHoc.Activity_QuanLyLopHoc;
 import com.example.utehy_app.R;
 import com.example.utehy_app.TaoMonHoc.Activity_QuanLyMonHoc;
 
 public class Activity_QuanTriALL extends AppCompatActivity {
-    ImageView imgTaiKhoan,imgThoat,imgThongBao,imgMonHoc;
+    ImageView imgTaiKhoan,imgThoat,imgThongBao,imgMonHoc,imgLopHoc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,13 @@ public class Activity_QuanTriALL extends AppCompatActivity {
                 startActivity(new Intent(Activity_QuanTriALL.this, Activity_QuanLyMonHoc.class));
             }
         });
+        imgLopHoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Activity_QuanTriALL.this, Activity_QuanLyLopHoc.class));
+            }
+        });
     }
 
     private void Init() {
@@ -59,5 +67,6 @@ public class Activity_QuanTriALL extends AppCompatActivity {
         imgThoat = findViewById(R.id.QTA_imgThoat);
         imgThongBao = findViewById(R.id.QTA_imgThongBao);
         imgMonHoc = findViewById(R.id.QTA_imgMonHoc);
+        imgLopHoc = findViewById(R.id.QTA_imgLopHoc);
     }
 }
