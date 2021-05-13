@@ -112,6 +112,7 @@ public class Activity_DangNhap extends AppCompatActivity {
                         if(tk.getMatKhau()!=null ) {
                             if (tk.getMatKhau().equals(MatKhau)) {
 //                            Toast.makeText(Activity_DangNhap.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
+                                tk_login = tk;
                                 SharedPreferences.Editor editor=sharedPreferences.edit();
                                 editor.putString("MaSV",MaSV);
                                 editor.commit();

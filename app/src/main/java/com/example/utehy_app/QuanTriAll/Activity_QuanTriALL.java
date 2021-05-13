@@ -14,7 +14,7 @@ import com.example.utehy_app.R;
 import com.example.utehy_app.TaoMonHoc.Activity_QuanLyMonHoc;
 
 public class Activity_QuanTriALL extends AppCompatActivity {
-    ImageView imgTaiKhoan,imgThoat,imgThongBao,imgMonHoc,imgLopHoc;
+    ImageView imgTaiKhoan,imgThoat,imgThongBao,imgMonHoc,imgLopHoc,imgDoiMK;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +60,13 @@ public class Activity_QuanTriALL extends AppCompatActivity {
                 startActivity(new Intent(Activity_QuanTriALL.this, Activity_QuanLyLopHoc.class));
             }
         });
+        imgDoiMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Activity_QuanTriALL.this, Activity_DoiMatKhau_QTV.class));
+            }
+        });
     }
 
     private void Init() {
@@ -68,5 +75,6 @@ public class Activity_QuanTriALL extends AppCompatActivity {
         imgThongBao = findViewById(R.id.QTA_imgThongBao);
         imgMonHoc = findViewById(R.id.QTA_imgMonHoc);
         imgLopHoc = findViewById(R.id.QTA_imgLopHoc);
+        imgDoiMK = findViewById(R.id.QTA_imgDoiMK);
     }
 }

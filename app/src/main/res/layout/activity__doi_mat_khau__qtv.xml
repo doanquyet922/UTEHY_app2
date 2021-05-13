@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuanTriAll.Activity_DoiMatKhau_QTV">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/QuanTriAll_DoiMatKhau_toolbar"/>
+
+    <EditText
+        android:id="@+id/QuanTriAll_DoiMatKhau_edtMKCu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="15dp"
+        android:inputType="textPassword"
+        android:layout_marginRight="15dp"
+        android:hint="Mật khẩu cũ"></EditText>
+    <EditText
+        android:id="@+id/QuanTriAll_DoiMatKhau_edtMKMoi"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textPassword"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Mật khẩu mới"></EditText>
+    <EditText
+        android:id="@+id/QuanTriAll_DoiMatKhau_edtMKXacNhan"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:inputType="textPassword"
+
+        android:layout_marginRight="15dp"
+        android:hint="Xác nhận mật khẩu"></EditText>
+
+    <Button
+        android:id="@+id/QuanTriAll_DoiMatKhau_btnXacNhan"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="#2196F3"
+        android:text="Xác nhận"></Button>
+</LinearLayout>
